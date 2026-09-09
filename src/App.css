@@ -1,0 +1,86 @@
+/* temporal */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: block;W
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: #3b2416;
+    color: #352114;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#root {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+    text-align: left;
+}
+
+.parchment {
+    margin-bottom: 24px;
+    padding: 24px;
+    background: #f1deb9;
+    border: 1px solid #b28a49;
+    border-radius: 4px;
+    box-shadow: 0 6px 18px rgb(0 0 0 / 25%);
+}
+
+.site-header,
+.site-footer {
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+h2 {
+    margin: 0 0 20px;
+    font-size: 28px;
+}
+
+.adventurers ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.adventurers li {
+    padding: 12px 0;
+    border-bottom: 1px solid #b28a49;
+    overflow-wrap: anywhere;
+}
+
+.site-footer {
+    font-size: 14px;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    #root {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .adventurers ul {
+        grid-template-columns: 1fr;
+    }
+}
