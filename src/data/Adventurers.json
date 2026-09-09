@@ -1,0 +1,227 @@
+[
+    {
+        "id": 1,
+        "name": "Kael Thornwood",
+        "characterClass": "Ranger"
+    },
+    {
+        "id": 2,
+        "name": "Mira Silvermoon",
+        "characterClass": "Mage"
+    },
+    {
+        "id": 3,
+        "name": "Thorne Ironvale",
+        "characterClass": "Warrior"
+    },
+    {
+        "id": 4,
+        "name": "Gordon Freeman",
+        "characterClass": "Scientist"
+    },
+    {
+        "id": 5,
+        "name": "Isolde Greenleaf",
+        "characterClass": "Rogue"
+    },
+    {
+        "id": 6,
+        "name": "Hide the Pain Harold",
+        "characterClass": "Peasant"
+    },
+    {
+        "id": 7,
+        "name": "Steve",
+        "characterClass": "Miner"
+    },
+    {
+        "id": 8,
+        "name": "Magnus Starfall",
+        "characterClass": "Cleric"
+    },
+    {
+        "id": 9,
+        "name": "Giga Chad",
+        "characterClass": "Barbarian"
+    },
+    {
+        "id": 10,
+        "name": "Gandalf the Grey",
+        "characterClass": "Mage"
+    },
+    {
+        "id": 11,
+        "name": "Sanic Hegehog",
+        "characterClass": "Speedster"
+    },
+    {
+        "id": 12,
+        "name": "Torin Deepwater",
+        "characterClass": "Ranger"
+    },
+    {
+        "id": 13,
+        "name": "Lorien Dawn",
+        "characterClass": "Necromancer"
+    },
+    {
+        "id": 14,
+        "name": "Cedric Bonecrusher",
+        "characterClass": "Paladin"
+    },
+    {
+        "id": 15,
+        "name": "Obi-Wan Kenobi",
+        "characterClass": "Jedi"
+    },
+    {
+        "id": 16,
+        "name": "Geralt of Rivia",
+        "characterClass": "Witcher"
+    },
+    {
+        "id": 17,
+        "name": "Shrek",
+        "characterClass": "Druid"
+    },
+    {
+        "id": 18,
+        "name": "Let Me Solo Her",
+        "characterClass": "Samurai"
+    },
+    {
+        "id": 19,
+        "name": "Leeroy Jenkins",
+        "characterClass": "Paladin"
+    },
+    {
+        "id": 20,
+        "name": "Lyra Oakenshield",
+        "characterClass": "Ranger"
+    },
+    {
+        "id": 21,
+        "name": "Draven Ironcast",
+        "characterClass": "Warlock"
+    },
+    {
+        "id": 22,
+        "name": "Arthur Morgan",
+        "characterClass": "Gunslinger"
+    },
+    {
+        "id": 23,
+        "name": "Evelynn Shadowweaver",
+        "characterClass": "Warlock"
+    },
+    {
+        "id": 24,
+        "name": "Arthas Menethil",
+        "characterClass": "Death Knight"
+    },
+    {
+        "id": 25,
+        "name": "Chuck Norris",
+        "characterClass": "Monk"
+    },
+    {
+        "id": 26,
+        "name": "Vesper Stonefist",
+        "characterClass": "Alchemist"
+    },
+    {
+        "id": 27,
+        "name": "Solid Snake",
+        "characterClass": "Rogue"
+    },
+    {
+        "id": 28,
+        "name": "Rick Astley",
+        "characterClass": "Bard"
+    },
+    {
+        "id": 29,
+        "name": "Jack Sparrow",
+        "characterClass": "Pirate"
+    },
+    {
+        "id": 30,
+        "name": "Seraphina Highgarden",
+        "characterClass": "Alchemist"
+    },
+    {
+        "id": 31,
+        "name": "Tony Stark",
+        "characterClass": "Artificer"
+    },
+    {
+        "id": 32,
+        "name": "Thalia Bloodblade",
+        "characterClass": "Cleric"
+    },
+    {
+        "id": 33,
+        "name": "Freya Wildheart",
+        "characterClass": "Necromancer"
+    },
+    {
+        "id": 34,
+        "name": "Liora Swiftstream",
+        "characterClass": "Illusionist"
+    },
+    {
+        "id": 35,
+        "name": "Doom Slayer",
+        "characterClass": "Berserker"
+    },
+    {
+        "id": 36,
+        "name": "John Wick",
+        "characterClass": "Assassin"
+    },
+    {
+        "id": 37,
+        "name": "Elara Skywatcher",
+        "characterClass": "Monk"
+    },
+    {
+        "id": 38,
+        "name": "Darius Nightshade",
+        "characterClass": "Necromancer"
+    },
+    {
+        "id": 39,
+        "name": "Garrick Voidwalker",
+        "characterClass": "Sorcerer"
+    },
+    {
+        "id": 40,
+        "name": "Rurik Grim",
+        "characterClass": "Sorcerer"
+    },
+    {
+        "id": 41,
+        "name": "Nyx Blackwood",
+        "characterClass": "Bard"
+    },
+    {
+        "id": 42,
+        "name": "Amara Ashwalker",
+        "characterClass": "Druid"
+    },
+    {
+        "id": 43,
+        "name": "Aria Stormrider",
+        "characterClass": "Bard"
+    },
+    {
+        "id": 44,
+        "name": "Zephyr Sunwhisper",
+        "characterClass": "Necromancer"
+    },
+    {
+        "id": 45,
+        "name": "Finnick Spellbinder",
+        "characterClass": "Monk"
+    }
+]
