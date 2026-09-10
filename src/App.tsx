@@ -1,5 +1,5 @@
 import { Adventurers } from "./components/Adventurers/Adventurers";
-import { QuestAssignments } from "./components/QuestAssignments/QuestAssignment";
+import { QuestAssignments } from "./components/QuestAssignments/QuestAssignments";
 import { Layout } from "./components/Layout/Layout";
 import "./App.css";
 

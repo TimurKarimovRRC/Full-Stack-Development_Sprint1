@@ -1,5 +1,5 @@
 import questData from "../../data/QuestAssignments.json";
-import "./QuestAssignment.css";
+import "./QuestAssignments.css";
 
 interface QuestAssignment {
     id: number;
