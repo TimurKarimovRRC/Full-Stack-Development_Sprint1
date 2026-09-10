@@ -1,5 +1,6 @@
-import { Adventurers } from "./components/Adventurers/Adventurers";
-import { QuestAssingments } from "./components/QuestAssignments/QuestAssignment";
+import { Adventurers } from "./component/Adventurers/Adventurers";
+import { QuestsAssignments } from "./components/QuestAssignments/QuestAssignment";
+import { Layout } from "./component/Layout/Layout";
 import "./App.css";
 
 export function App() {
@@ -8,15 +9,11 @@ export function App() {
         "Aum Mistry",
         "MacKinley Wanless"
     ];
-        return (
-            <Layout title="Fantasy Quest Board" members={members}>
-                <Adventurers />
-                <QuestAssignments />
-            </main>
 
-            <footer className="site-footer parchment">
-                <p>Timur Karimov · Aum Mistry · MacKinley Wanless</p>
-            </footer>
-        </>
+    return (
+        <Layout title="Fantasy Quest Board" members={members}>
+            <QuestsAssignments />
+            <Adventurers />
+        </Layout>
     );
 }
