@@ -4,7 +4,7 @@
 }
 
 body {
-    display: block;W
+    display: block;
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
@@ -48,6 +48,118 @@ h2 {
     font-size: 28px;
 }
 
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin-bottom: 0;
+}
+
+.eyebrow {
+    margin: 0 0 2px;
+    color: #76501f;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.quest-count {
+    padding: 4px 10px;
+    border: 1px solid #b28a49;
+    color: #76501f;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.quest-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.quest-card {
+    padding: 18px;
+    background: rgb(255 246 220 / 58%);
+    border: 1px solid #c49d5c;
+    border-left: 4px solid #9b632b;
+}
+
+.quest-card__topline,
+.quest-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: #76501f;
+    font-size: 14px;
+}
+
+.quest-card__topline > span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.difficulty {
+    padding: 2px 7px;
+    border: 1px solid currentColor;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.difficulty--easy {
+    color: #477044;
+}
+
+.difficulty--medium {
+    color: #9a5b1e;
+}
+
+.difficulty--hard {
+    color: #a33f28;
+}
+
+.difficulty--expert {
+    color: #713b67;
+}
+
+.quest-card h3 {
+    margin: 12px 0 4px;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.quest-card p {
+    min-height: 52px;
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.quest-card__footer {
+    padding-top: 12px;
+    border-top: 1px solid rgb(178 138 73 / 60%);
+}
+
+.quest-card__footer strong {
+    color: #352114;
+    font-weight: normal;
+}
+
+.adventurers {
+    padding-top: 24px;
+    border-top: 1px solid #b28a49;
+}
+
 .adventurers ul {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -78,6 +190,16 @@ h2 {
 
     h1 {
         font-size: 28px;
+    }
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .quest-list {
+        grid-template-columns: 1fr;
     }
 
     .adventurers ul {
