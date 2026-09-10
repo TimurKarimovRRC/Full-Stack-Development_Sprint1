@@ -21,7 +21,7 @@ export function QuestAssignments() {
         <ul className = "quest-assignments__list">
 
             {assignment.map((quest) => (
-                <li key={quest.id} className = "quest-assignment__item">
+                <li key={quest.id} className = "quest-assignments__item">
                     <h3 className = "quest-assignment__title">{quest.title}</h3>
                     <p className = "quest-assignments__description">{quest.description}</p>
 
