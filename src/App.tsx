@@ -1,5 +1,5 @@
-import { Adventurers } from "./components/Adventurers/Adventurers";
-import { Layout } from "./components/Layout/Layout";
+import { Adventurers } from "./component/Adventurers/Adventurers";
+import { Layout } from "./component/Layout/Layout";
 import "./App.css";
 
 // export function App() {
