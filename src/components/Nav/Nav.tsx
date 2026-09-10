@@ -1,10 +1,8 @@
 export function Nav() {
     return (
        
-        <div className="page-links">
-            <span>
-                <a href="">Adventurers</a>
-            </span>
-        </div>
+        <nav className="site-nav parchment" aria-label="Main navigation">
+            <a href="#main-content">Adventurers</a>
+        </nav>
     );
 }

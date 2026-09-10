@@ -27,7 +27,7 @@ export function App() {
         "MacKinley Wanless"
     ];
         return (
-            <Layout title="Fantasy Quest Board">
+            <Layout title="Fantasy Quest Board" members={members}>
                 <Adventurers />
             </Layout>
         );

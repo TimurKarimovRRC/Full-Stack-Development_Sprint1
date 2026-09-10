@@ -3,16 +3,24 @@ import { Header } from "../Header/Header";
 import { Nav } from "../Nav/Nav";
 import { Footer } from "../Footer/Footer";
 
+interface LayoutProps {
+    title: string;
+    members: string[];
+    children: ReactNode;
+}
 
-export function Layout({ title, children }: { title: string; children: ReactNode }) {
+export function Layout({ title, members, children }: LayoutProps) {
     return (
-        <div className="page">
+        <>
             <Header title={title} />
+
             <Nav />
-            <main className="parchment">
+
+            <main id="main-content" className="parchment">
                 {children}
             </main>
-            <Footer />
-        </div>
+
+            <Footer members={members} />
+        </>
     );
 }
