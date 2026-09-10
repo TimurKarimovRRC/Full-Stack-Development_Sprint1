@@ -1,24 +1,7 @@
 import { Adventurers } from "./component/Adventurers/Adventurers";
+import { QuestsAssignments } from "./components/QuestAssignments/QuestAssignment";
 import { Layout } from "./component/Layout/Layout";
 import "./App.css";
-
-// export function App() {
-//     return (
-//         <>
-//             <header className="site-header parchment">
-//                 <h1>Fantasy Quest Board</h1>
-//             </header>
-
-//             <main className="parchment">
-//                 <Adventurers />
-//             </main>
-
-//             <footer className="site-footer parchment">
-//                 <p>Timur Karimov · Aum Mistry · MacKinley Wanless</p>
-//             </footer>
-//         </>
-//     );
-// }
 
 export function App() {
     const members = [
@@ -26,9 +9,11 @@ export function App() {
         "Aum Mistry",
         "MacKinley Wanless"
     ];
-        return (
-            <Layout title="Fantasy Quest Board" members={members}>
-                <Adventurers />
-            </Layout>
-        );
-    }
+
+    return (
+        <Layout title="Fantasy Quest Board" members={members}>
+            <QuestsAssignments />
+            <Adventurers />
+        </Layout>
+    );
+}

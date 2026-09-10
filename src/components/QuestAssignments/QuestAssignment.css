@@ -1,0 +1,65 @@
+.quest-assignmet__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(o, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.quest-assignmet__item {
+    padding: 16px;
+    background: #fff8f0;
+    border: 1px solid #b28a49;
+    border-left: 6px solid #8b4513;
+    border-radius: 4px;
+}
+
+.quest-assignmet__title {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.quest-assignmet__description {
+    margin: 0 0 12px;
+}
+
+.quest-assignmet__details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 12px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.quest-assignmet__details dt {
+    font-weight: bold;
+}
+
+.quest-assignmet__details dd {
+    margin: 0;
+}
+
+.quest-assignmet__status {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.quest-assignmet__status--in-progress {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.quest-assignmet__status--completed {
+    background-color: #d1e7dd;
+    color: #0a3622;
+}
+
+@media (max-width: 600px) {
+    .quest-assignmet__list {
+        grid-template-columns: 1fr;
+    }
+}
