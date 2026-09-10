@@ -1,4 +1,5 @@
 import { Adventurers } from "./component/Adventurers";
+import { Layout } from "./component/Layout";
 import "./App.css";
 
 export function App() {
@@ -18,3 +19,16 @@ export function App() {
         </>
     );
 }
+
+// export function App() {
+//     const members = [
+//         "Timur Karimov",
+//         "Aum Mistry",
+//         "MacKinley Wanless"
+//     ];
+//         return (
+//             <Layout title="Fantasy Quest Board">
+//                 <Adventurers />
+//             </Layout>
+//         );
+//     }
