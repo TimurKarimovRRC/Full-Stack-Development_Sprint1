@@ -1,4 +1,5 @@
-import { Adventurers } from "./component/Adventurers";
+import { Adventurers } from "./components/Adventurers/Adventurers";
+import { QuestAssingments } from "./components/QuestAssignments/QuestAssignment";
 import "./App.css";
 
 export function App() {
@@ -10,6 +11,7 @@ export function App() {
         return (
             <Layout title="Fantasy Quest Board" members={members}>
                 <Adventurers />
+                <QuestAssignments />
             </main>
 
             <footer className="site-footer parchment">
