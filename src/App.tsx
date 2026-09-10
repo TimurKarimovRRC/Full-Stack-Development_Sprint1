@@ -1,4 +1,5 @@
 import { Adventurers } from "./component/Adventurers";
+import { Quests } from "./component/Quests/Quests";
 import "./App.css";
 
 export function App() {
@@ -9,6 +10,7 @@ export function App() {
             </header>
 
             <main className="parchment">
+                <Quests />
                 <Adventurers />
             </main>
 
