@@ -7,7 +7,7 @@ export function App() {
     const members = [
         "Timur Karimov",
         "Aum Mistry",
-        "MacKinley Wanless"
+        "Mackinley Wanless"
     ];
 
     return (

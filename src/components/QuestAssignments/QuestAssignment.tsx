@@ -1,53 +1,47 @@
-import questData from "../../data/QuestAssignments.json";
-import "./QuestAssignment.css";
+import questData from "../../data/Quests.json";
 
-interface QuestAssignment {
+interface Quest {
     id: number;
-    title: string,
-    description: string,
-    status: "In Progress" | "Completed";
+    title: string;
+    location: string;
+    difficulty: "Easy" | "Medium" | "Hard" | "Expert";
+    description: string;
     reward: string;
-    dueDate: string;
 }
 
 export function QuestAssignments() {
-    const assignment = questData as QuestAssignment[];
+    const quests = questData as Quest[];
 
     return (
+        <section className="quest-assignments">
+            <div className="section-heading">
+                <div>
+                    <p className="eyebrow">Available contracts</p>
+                    <h2>Quests</h2>
+                </div>
+                <span className="quest-count">{quests.length} quests</span>
+            </div>
 
-        <section className = "quest-assignments">
-            <h2>My Quest Assignments</h2>
+            <ul className="quest-list">
+                {quests.map((quest) => (
+                    <li key={quest.id} className="quest-card">
+                        <div className="quest-card__topline">
+                            <span>{quest.location}</span>
+                            <span className={`difficulty difficulty--${quest.difficulty.toLowerCase()}`}>
+                                {quest.difficulty}
+                            </span>
+                        </div>
 
-        <ul className = "quest-assignments__list">
+                        <h3>{quest.title}</h3>
+                        <p>{quest.description}</p>
 
-            {assignment.map((quest) => (
-                <li key={quest.id} className = "quest-assignments__item">
-                    <h3 className = "quest-assignment__title">{quest.title}</h3>
-                    <p className = "quest-assignments__description">{quest.description}</p>
-
-                    <dl className = " quest-assignment__details">
-                        <dt>Status</dt>
-
-                        <dd 
-                        className = { "quest-assignments__status quest-assignments__status--" + 
-                            quest.status.toLowerCase().replace( " ", "-")
-                        }>
-                            {quest.status}
-                        </dd>
-
-                        <dt>Reward</dt>
-
-                        <dd>{quest.reward}</dd>
-
-                        <dt>Due</dt>
-
-                        <dd>
-                            <time dateTime={quest.dueDate}>{quest.dueDate}</time>
-                        </dd>
-                    </dl>
-                </li>        
+                        <div className="quest-card__footer">
+                            <span>Reward</span>
+                            <strong>{quest.reward}</strong>
+                        </div>
+                    </li>
             ))}
-        </ul>
+            </ul>
         </section>
     );
 }
