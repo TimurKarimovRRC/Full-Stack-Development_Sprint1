@@ -1,6 +1,6 @@
 import questData from "../../data/quests.json";
 
-interface Quest {
+interface QuestAssignment {
     id: number;
     title: string;
     location: string;
@@ -10,20 +10,19 @@ interface Quest {
 }
 
 export function QuestAssignments() {
-    const quests = questData as Quest[];
+     const assignment = questData as QuestAssignment[];
 
     return (
         <section className="quest-assignments">
             <div className="section-heading">
                 <div>
-                    <p className="eyebrow">Available contracts</p>
-                    <h2>Quests</h2>
+                    <h2>My Quest Assignments</h2>
                 </div>
-                <span className="quest-count">{quests.length} quests</span>
+                <span className="quest-count">{assignment.length} quests</span>
             </div>
 
             <ul className="quest-list">
-                {quests.map((quest) => (
+                {assignment.map((quest) => (
                     <li key={quest.id} className="quest-card">
                         <div className="quest-card__topline">
                             <span>{quest.location}</span>
