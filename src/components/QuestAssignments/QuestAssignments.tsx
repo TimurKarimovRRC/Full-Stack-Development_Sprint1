@@ -1,47 +1,53 @@
-import questData from "../../data/Quests.json";
+import questData from "../../data/QuestAssignments.json";
 import "./QuestAssignments.css";
 
 interface QuestAssignment {
     id: number;
-    title: string;
-    location: string;
-    difficulty: "Easy" | "Medium" | "Hard" | "Expert";
-    description: string;
+    title: string,
+    description: string,
+    status: "In Progress" | "Completed";
     reward: string;
+    dueDate: string;
 }
 
 export function QuestAssignments() {
-     const assignment = questData as QuestAssignment[];
+    const assignment = questData as QuestAssignment[];
 
     return (
-        <section className="quest-assignments">
-            <div className="section-heading">
-                <div>
-                    <h2>My Quest Assignments</h2>
-                </div>
-                <span className="quest-count">{assignment.length} quests</span>
-            </div>
 
-            <ul className="quest-list">
-                {assignment.map((quest) => (
-                    <li key={quest.id} className="quest-card">
-                        <div className="quest-card__topline">
-                            <span>{quest.location}</span>
-                            <span className={`difficulty difficulty--${quest.difficulty.toLowerCase()}`}>
-                                {quest.difficulty}
-                            </span>
-                        </div>
+        <section className = "quest-assignments">
+            <h2>My Quest Assignments</h2>
 
-                        <h3>{quest.title}</h3>
-                        <p>{quest.description}</p>
+        <ul className = "quest-assignments__list">
 
-                        <div className="quest-card__footer">
-                            <span>Reward</span>
-                            <strong>{quest.reward}</strong>
-                        </div>
-                    </li>
+            {assignment.map((quest) => (
+                <li key={quest.id} className = "quest-assignments__item">
+                    <h3 className = "quest-assignment__title">{quest.title}</h3>
+                    <p className = "quest-assignments__description">{quest.description}</p>
+
+                    <dl className = " quest-assignment__details">
+                        <dt>Status</dt>
+
+                        <dd 
+                        className = { "quest-assignments__status quest-assignments__status--" + 
+                            quest.status.toLowerCase().replace( " ", "-")
+                        }>
+                            {quest.status}
+                        </dd>
+
+                        <dt>Reward</dt>
+
+                        <dd>{quest.reward}</dd>
+
+                        <dt>Due</dt>
+
+                        <dd>
+                            <time dateTime={quest.dueDate}>{quest.dueDate}</time>
+                        </dd>
+                    </dl>
+                </li>        
             ))}
-            </ul>
+        </ul>
         </section>
     );
 }
