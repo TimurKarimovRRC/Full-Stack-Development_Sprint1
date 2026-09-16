@@ -1,5 +1,6 @@
-import { Adventurers } from "./components/Adventurers/Adventurers";
-import { QuestAssingments } from "./components/QuestAssignments/QuestAssignment";
+import { Adventurers } from "./component/Adventurers/Adventurers";
+import { QuestsAssignments } from "./components/QuestAssignments/QuestAssignment";
+import { Layout } from "./component/Layout/Layout";
 import "./App.css";
 
 export function App() {
