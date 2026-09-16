@@ -6,17 +6,13 @@ export function App() {
     const members = [
         "Timur Karimov",
         "Aum Mistry",
-        "MacKinley Wanless"
+        "Mackinley Wanless"
     ];
-        return (
-            <Layout title="Fantasy Quest Board" members={members}>
-                <Adventurers />
-                <QuestAssignments />
-            </main>
 
-            <footer className="site-footer parchment">
-                <p>Timur Karimov · Aum Mistry · MacKinley Wanless</p>
-            </footer>
-        </>
+    return (
+        <Layout title="Fantasy Quest Board" members={members}>
+            <QuestAssignments />
+            <Adventurers />
+        </Layout>
     );
 }
