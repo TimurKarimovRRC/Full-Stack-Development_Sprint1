@@ -1,4 +1,4 @@
-import adventurerData from "../../data/adventurers.json";
+import adventurerData from "../../data/Adventurers.json";
 
 export function Adventurers() {
     const adventurers = adventurerData;
