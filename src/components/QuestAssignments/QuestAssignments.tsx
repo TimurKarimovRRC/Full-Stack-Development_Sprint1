@@ -1,4 +1,4 @@
-import questData from "../../data/Quests.json";
+import questData from "../../data/quests.json";
 
 interface Quest {
     id: number;
