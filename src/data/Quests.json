@@ -1,0 +1,242 @@
+[
+    {
+        "id": 1,
+        "title": "Lost Lantern",
+        "location": "Willow Road",
+        "difficulty": "Easy",
+        "description": "Find the lantern left beside the old road.",
+        "reward": "12 gold"
+    },
+    {
+        "id": 2,
+        "title": "Herb Run",
+        "location": "Greenhollow",
+        "difficulty": "Easy",
+        "description": "Gather five moonleaf herbs for the village healer.",
+        "reward": "A healing potion"
+    },
+    {
+        "id": 3,
+        "title": "Quiet Bridge",
+        "location": "North Brook",
+        "difficulty": "Medium",
+        "description": "Clear the small bridge so travelers can pass safely.",
+        "reward": "25 gold"
+    },
+    {
+        "id": 4,
+        "title": "Message for Mira",
+        "location": "Riverside Mill",
+        "difficulty": "Easy",
+        "description": "Deliver a sealed letter before sunset.",
+        "reward": "A silver compass"
+    },
+    {
+        "id": 5,
+        "title": "Baker's Basket",
+        "location": "Market Square",
+        "difficulty": "Easy",
+        "description": "Carry a basket of bread to the watchtower.",
+        "reward": "8 gold"
+    },
+    {
+        "id": 6,
+        "title": "A Warm Fire",
+        "location": "Pinewatch Camp",
+        "difficulty": "Easy",
+        "description": "Collect three bundles of dry wood for the campers.",
+        "reward": "A wool cloak"
+    },
+    {
+        "id": 7,
+        "title": "Missing Sign",
+        "location": "East Fork",
+        "difficulty": "Easy",
+        "description": "Find the missing road sign and put it back in place.",
+        "reward": "10 gold"
+    },
+    {
+        "id": 8,
+        "title": "Garden Patrol",
+        "location": "Greenhollow",
+        "difficulty": "Easy",
+        "description": "Chase away the rabbits nibbling on the mayor's garden.",
+        "reward": "A basket of apples"
+    },
+    {
+        "id": 9,
+        "title": "River Pebbles",
+        "location": "North Brook",
+        "difficulty": "Easy",
+        "description": "Bring five smooth blue pebbles to the village mason.",
+        "reward": "A small shield"
+    },
+    {
+        "id": 10,
+        "title": "The Locked Archive",
+        "location": "Town Hall",
+        "difficulty": "Hard",
+        "description": "Retrieve an old map from the locked archive before the council meets.",
+        "reward": "45 gold"
+    },
+    {
+        "id": 11,
+        "title": "Stable Sweep",
+        "location": "West Gate",
+        "difficulty": "Easy",
+        "description": "Clean the stable and refill the horses' water troughs.",
+        "reward": "A riding lesson"
+    },
+    {
+        "id": 12,
+        "title": "The Red Ribbon",
+        "location": "Willow Road",
+        "difficulty": "Easy",
+        "description": "Return a red ribbon to the child who dropped it.",
+        "reward": "A lucky charm"
+    },
+    {
+        "id": 13,
+        "title": "Lantern Oil",
+        "location": "Harbor Row",
+        "difficulty": "Medium",
+        "description": "Deliver two bottles of oil to the night watch.",
+        "reward": "20 gold"
+    },
+    {
+        "id": 14,
+        "title": "The Broken Ferry",
+        "location": "North Brook",
+        "difficulty": "Hard",
+        "description": "Secure the ferry ropes and get the damaged boat back to shore.",
+        "reward": "A riverstone amulet"
+    },
+    {
+        "id": 15,
+        "title": "Fresh Paint",
+        "location": "Market Square",
+        "difficulty": "Easy",
+        "description": "Paint the town notice board before noon.",
+        "reward": "15 gold"
+    },
+    {
+        "id": 16,
+        "title": "Lost Button",
+        "location": "Town Hall",
+        "difficulty": "Easy",
+        "description": "Find the brass button lost by the town clerk.",
+        "reward": "6 gold"
+    },
+    {
+        "id": 17,
+        "title": "Tea Delivery",
+        "location": "Hilltop Cottage",
+        "difficulty": "Easy",
+        "description": "Deliver a warm tin of tea to the retired captain.",
+        "reward": "A sturdy walking stick"
+    },
+    {
+        "id": 18,
+        "title": "Fence Fix",
+        "location": "South Meadow",
+        "difficulty": "Easy",
+        "description": "Replace three loose fence posts around the meadow.",
+        "reward": "14 gold"
+    },
+    {
+        "id": 19,
+        "title": "Blue Potatoes",
+        "location": "Greenhollow Farm",
+        "difficulty": "Easy",
+        "description": "Pick a basket of blue potatoes for the innkeeper.",
+        "reward": "A hearty lunch"
+    },
+    {
+        "id": 20,
+        "title": "Storm on the Ridge",
+        "location": "Pinewatch Woods",
+        "difficulty": "Hard",
+        "description": "Reach the ridge and relight the warning beacon before nightfall.",
+        "reward": "60 gold"
+    },
+    {
+        "id": 21,
+        "title": "Clean the Fountain",
+        "location": "Market Square",
+        "difficulty": "Easy",
+        "description": "Remove the leaves and stones from the town fountain.",
+        "reward": "A copper ring"
+    },
+    {
+        "id": 22,
+        "title": "The Spare Key",
+        "location": "West Gate",
+        "difficulty": "Easy",
+        "description": "Take the spare gate key to the evening guard.",
+        "reward": "9 gold"
+    },
+    {
+        "id": 23,
+        "title": "Miller's Flour",
+        "location": "Riverside Mill",
+        "difficulty": "Easy",
+        "description": "Carry one sack of flour from the mill to the bakery.",
+        "reward": "A loaf of bread"
+    },
+    {
+        "id": 24,
+        "title": "Warm Blankets",
+        "location": "North Brook",
+        "difficulty": "Easy",
+        "description": "Bring two blankets to travelers waiting by the bridge.",
+        "reward": "18 gold"
+    },
+    {
+        "id": 25,
+        "title": "The Sealed Well",
+        "location": "Greenhollow",
+        "difficulty": "Hard",
+        "description": "Find the missing seal and close the abandoned well before it floods.",
+        "reward": "A warding lantern"
+    },
+    {
+        "id": 26,
+        "title": "Watch the Kettle",
+        "location": "Harbor Row",
+        "difficulty": "Easy",
+        "description": "Keep an eye on the cook's kettle while she shops.",
+        "reward": "A bowl of stew"
+    },
+    {
+        "id": 27,
+        "title": "Return the Net",
+        "location": "East Fork",
+        "difficulty": "Easy",
+        "description": "Return a fisher's net found beside the riverbank.",
+        "reward": "11 gold"
+    },
+    {
+        "id": 28,
+        "title": "Count the Chickens",
+        "location": "Greenhollow Farm",
+        "difficulty": "Easy",
+        "description": "Count the farm chickens and report the missing ones.",
+        "reward": "A dozen eggs"
+    },
+    {
+        "id": 29,
+        "title": "The Dragon's Debt",
+        "location": "Ashen Pass",
+        "difficulty": "Expert",
+        "description": "Climb the pass and recover the village's stolen bell from a dragon's hoard.",
+        "reward": "A dragon-scale shield"
+    },
+    {
+        "id": 30,
+        "title": "Sunset Post",
+        "location": "Willow Road",
+        "difficulty": "Easy",
+        "description": "Place the evening notice on the roadside post.",
+        "reward": "A red scarf"
+    }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Slay the Mountain Dragon",
+    "description": "Defeat the dragon terrorizing the western peaks.",
+    "status": "In Progress",
+    "reward": "500 Gold",
+    "dueDate": "2026-09-20"
+  },
+  {
+    "id": 2,
+    "title": "Gather Moonflowers",
+    "description": "Collect 10 moonflowers from the enchanted forest.",
+    "status": "Completed",
+    "reward": "50 Gold",
+    "dueDate": "2026-09-05"
+  },
+  {
+    "id": 3,
+    "title": "Rescue the Lost Merchant",
+    "description": "Find and escort the merchant back to the village.",
+    "status": "In Progress",
+    "reward": "200 Gold",
+    "dueDate": "2026-09-25"
+  },
+  {
+    "id": 4,
+    "title": "Clear the Goblin Cave",
+    "description": "Remove the goblin threat from the eastern cave.",
+    "status": "Completed",
+    "reward": "150 Gold",
+    "dueDate": "2026-09-01"
+  }
+]

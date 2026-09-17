@@ -1,0 +1,68 @@
+.quest-assignments__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0 0 36px;
+    padding: 0;
+    list-style: none;
+}
+
+.quest-assignments__item {
+    padding: 18px;
+    background: rgb(255 246 220 / 58%);
+    border: 1px solid #c49d5c;
+    border-left: 4px solid #9b632b;
+}
+
+.quest-assignment__title {
+    margin: 12px 0 4px;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.quest-assignments__description {
+    min-height: 52px;
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.quest-assignment__details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 12px;
+    margin: 0 0 16px;
+    font-size: 14px;
+}
+
+.quest-assignment__details dt {
+    font-weight: bold;
+}
+
+.quest-assignment__details dd {
+    margin: 0;
+}
+
+.quest-assignments__status {
+    display: inline-block;
+    padding: 2px 7px;
+    border: 1px solid currentColor;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.quest-assignments__status--in-progress {
+    color: #9a5b1e;
+}
+
+.quest-assignments__status--completed {
+    color: #477044;
+}
+
+@media (max-width: 600px) {
+    .quest-assignments__list {
+        grid-template-columns: 1fr;
+    }
+}
