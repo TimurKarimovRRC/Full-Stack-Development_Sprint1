@@ -1,6 +1,4 @@
-import questData from "../../data/Quests.json";
-
-interface Quest {
+export interface Quest {
     id: number;
     title: string;
     location: string;
@@ -9,9 +7,11 @@ interface Quest {
     reward: string;
 }
 
-export function QuestBoards() {
-    const quests = questData as Quest[];
+interface QuestBoardsProps {
+    quests: Quest[];
+}
 
+export function QuestBoards({ quests }: QuestBoardsProps) {
     return (
         <section className="quest-assignments">
             <div className="section-heading">

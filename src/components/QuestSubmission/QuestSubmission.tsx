@@ -1,11 +1,28 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
+import type { Quest } from "../Quests/Quests";
 
-export function QuestSubmission() {
+interface QuestSubmissionProps {
+    onQuestSubmit: (quest: Quest) => void;
+}
+
+export function QuestSubmission({ onQuestSubmit }: QuestSubmissionProps) {
     const [submitted, setSubmitted] = useState(false);
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+        const nextQuest: Quest = {
+            id: Date.now(),
+            title: String(formData.get("title") ?? ""),
+            location: String(formData.get("location") ?? ""),
+            difficulty: String(formData.get("difficulty") ?? "Medium") as Quest["difficulty"],
+            description: String(formData.get("description") ?? ""),
+            reward: String(formData.get("reward") ?? "")
+        };
+
+        onQuestSubmit(nextQuest);
         setSubmitted(true);
         event.currentTarget.reset();
     }
