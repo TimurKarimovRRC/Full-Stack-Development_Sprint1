@@ -37,6 +37,17 @@ body {
     text-align: center;
 }
 
+.site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.site-nav a {
+    color: #76501f;
+    font-weight: bold;
+}
+
 h1 {
     margin: 0;
     font-size: 36px;
@@ -157,6 +168,75 @@ h2 {
     font-weight: normal;
 }
 
+.quest-submission {
+    padding-top: 24px;
+    border-top: 1px solid #b28a49;
+}
+
+.quest-submission__intro {
+    margin: -8px 0 20px;
+}
+
+.quest-form {
+    display: grid;
+    gap: 18px;
+    max-width: 720px;
+}
+
+.quest-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.quest-form label {
+    display: grid;
+    gap: 6px;
+    color: #76501f;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.quest-form input,
+.quest-form select,
+.quest-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #b28a49;
+    border-radius: 2px;
+    background: #fff6dc;
+    color: #352114;
+    font: inherit;
+    font-size: 16px;
+}
+
+.quest-form textarea {
+    resize: vertical;
+}
+
+.quest-form button {
+    width: fit-content;
+    padding: 10px 18px;
+    border: 1px solid #76501f;
+    border-radius: 2px;
+    background: #76501f;
+    color: #fff6dc;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+.quest-form button:hover,
+.quest-form button:focus-visible {
+    background: #352114;
+}
+
+.quest-form__success {
+    margin: 0;
+    color: #477044;
+    font-weight: bold;
+}
+
 .adventurers {
     padding-top: 24px;
     border-top: 1px solid #b28a49;
@@ -201,6 +281,10 @@ h2 {
     }
 
     .quest-list {
+        grid-template-columns: 1fr;
+    }
+
+    .quest-form__grid {
         grid-template-columns: 1fr;
     }
 
