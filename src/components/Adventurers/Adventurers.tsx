@@ -4,6 +4,8 @@ import {
     AdventurersForm,
     AdventurerCard,
 } from "../AdventurersForm/AdventurersForm";
+import "./Adventurers.css";
+
 
 export function Adventurers() {
     const [adventurers, setAdventurers] = useState(adventurerData);
