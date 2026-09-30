@@ -8,7 +8,14 @@ body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    background: #3b2416;
+
+    background-color: #2b1a10;
+    background-image: url("./images/Taver_table_wth_arms.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     color: #352114;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 18px;
@@ -291,4 +298,5 @@ h2 {
     .adventurers ul {
         grid-template-columns: 1fr;
     }
+
 }

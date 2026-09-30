@@ -1,9 +1,47 @@
+import { NavLink } from "react-router-dom";
+import "./Nav.css";
+
 export function Nav() {
     return (
-       
-        <nav className="site-nav parchment" aria-label="Main navigation">
-            <a href="#quest-submission">Quest Submission</a>
-            <a href="#main-content">Quest Board</a>
+        <nav
+            className="site-nav parchment"
+            aria-label="Main navigation"
+        >
+            <NavLink
+                to="/quests"
+                className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
+            >
+                Quest Board
+            </NavLink>
+
+            <NavLink
+                to="/quest-submission"
+                className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
+            >
+                Quest Submission
+            </NavLink>
+
+            <NavLink
+                to="/adventurers"
+                className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
+            >
+                Adventurers
+            </NavLink>
+
+            <NavLink
+                to="/assignments"
+                className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                }
+            >
+                Quest Assignments
+            </NavLink>
         </nav>
     );
 }
