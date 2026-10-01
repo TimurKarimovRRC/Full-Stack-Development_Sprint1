@@ -1,0 +1,64 @@
+.quest-assignment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #f1deb9;
+  border: 1px solid #b28a49;
+  border-radius: 4px;
+}
+
+.quest-assignment-form h3 {
+  margin: 0 0 8px;
+  color: #352114;
+}
+
+.quest-assignment-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quest-assignment-form__field label {
+  font-weight: bold;
+  color: #352114;
+}
+
+.quest-assignment-form__field select,
+.quest-assignment-form__field input {
+  padding: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid #b28a49;
+  border-radius: 4px;
+  background: #fff8f0;
+  color: #352114;
+}
+
+.quest-assignment-form__submit {
+  margin-top: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: inherit;
+  color: #fff8f0;
+  background: #8b4513;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quest-assignment-form__submit:hover {
+  background: #6e350f;
+}
+
+.quest-assignment-form__submit:focus-visible {
+  outline: 3px solid #b28a49;
+  outline-offset: 2px;
+}
+
+.quest-assignment-form__error {
+  margin: 0;
+  color: #8b0000;
+  font-weight: bold;
+}
