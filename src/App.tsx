@@ -10,11 +10,11 @@ import { Adventurers } from "./components/Adventurers/Adventurers";
 import { Layout } from "./components/Layout/Layout";
 import { QuestBoards, type Quest } from "./components/Quests/Quests";
 import { QuestSubmission } from "./components/QuestSubmission/QuestSubmission";
-import { QuestAssignmentPage } from "./components/pages/quest-assignment-page/QuestAssignmentPage";
+import { QuestAssignmentPage } from "./pages/QuestAssignmentPage/QuestAssignmentPage";
 
 import type { Assignment } from "./types/assignments";
 
-import adventurerData from "./data/adventurers.json";
+import adventurerData from "./data/Adventurers.json";
 import questData from "./data/Quests.json";
 
 import "./App.css";

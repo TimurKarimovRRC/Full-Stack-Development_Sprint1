@@ -1,7 +1,7 @@
 import { QuestAssignmentForm } from "../../components/QuestAssignmentForm/QuestAssignmentForm";
 import { AssignmentList } from "../../components/AssignmentList/AssignmentList";
 import type { Assignment, Adventurer } from "../../types/assignments";
-import { Quest } from "../../components/Quest/Quest";
+import type { Quest } from "../../components/Quests/Quests";
 import "./QuestAssignmentPage.css";
 
 interface QuestAssignmentPageProps {
@@ -30,13 +30,13 @@ export function QuestAssignmentPage({
             <QuestAssignmentForm
                 adventurers={adventurers}
                 quests={quests}
-                assignments={assignments}
+                assingments={assignments}
                 setAssignments={setAssignments}
             />
 
             <AssignmentList
                 adventurers={adventurers}
-                quests={quests}
+                quest={quests}
                 assignments={assignments}
                 setAssignments={setAssignments}
             />
