@@ -30,7 +30,7 @@ export function QuestAssignmentPage({
             <QuestAssignmentForm
                 adventurers={adventurers}
                 quests={quests}
-                assingments={assignments}
+                assignments={assignments}
                 setAssignments={setAssignments}
             />
 

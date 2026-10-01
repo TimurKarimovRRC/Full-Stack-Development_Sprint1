@@ -1,13 +1,13 @@
 import { useState } from "react";
-import type { Assignment, Adventurer } from "../../types/assingments";
+import type { Assignment, Adventurer } from "../../types/assignments";
 import type { Quest } from "../Quests/Quests";
 import "./QuestAssignmentForm.css";
 
 interface QuestAssignmentFormProps {
     adventurers: Adventurer[];
     quests: Quest[];
-    assingments: Assignment[];
-    setAssignments: (assingments: Assignment[]) => void;
+    assignments: Assignment[];
+    setAssignments: (assignments: Assignment[]) => void;
 }
 
 export function QuestAssignmentForm({
@@ -24,6 +24,7 @@ export function QuestAssignmentForm({
 
     const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    console.log("Submit fired", { adventurerId, questId, dueDate });
 
     // validation
     if (!adventurerId || !questId || !dueDate) {
@@ -40,6 +41,7 @@ export function QuestAssignmentForm({
         status: "In Progress",
     };
 
+    console.log("About to add:", newAssignment);
     setAssignments([...assignments, newAssignment]);
 
     setAdventurerId("");
