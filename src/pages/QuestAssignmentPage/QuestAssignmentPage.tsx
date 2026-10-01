@@ -36,7 +36,7 @@ export function QuestAssignmentPage({
 
             <AssignmentList
                 adventurers={adventurers}
-                quest={quests}
+                quests={quests}
                 assignments={assignments}
                 setAssignments={setAssignments}
             />

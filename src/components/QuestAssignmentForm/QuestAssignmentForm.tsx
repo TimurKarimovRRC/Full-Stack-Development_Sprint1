@@ -24,7 +24,6 @@ export function QuestAssignmentForm({
 
     const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("Submit fired", { adventurerId, questId, dueDate });
 
     // validation
     if (!adventurerId || !questId || !dueDate) {
@@ -41,7 +40,6 @@ export function QuestAssignmentForm({
         status: "In Progress",
     };
 
-    console.log("About to add:", newAssignment);
     setAssignments([...assignments, newAssignment]);
 
     setAdventurerId("");

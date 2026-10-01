@@ -1,9 +1,10 @@
 import type { Assignment, Adventurer } from "../../types/assignments.ts";
+import type { Quest } from "../Quests/Quests.tsx";
 import "./AssignmentList.css";
 
 interface AssignmentListProps {
     adventurers: Adventurer[];
-    quest: Quest[];
+    quests: Quest[];
     assignments: Assignment[];
     setAssignments: (assignments: Assignment[]) => void;
 }
