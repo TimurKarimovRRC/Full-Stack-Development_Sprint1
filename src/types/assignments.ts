@@ -5,3 +5,9 @@ export interface Assignment {
   dueDate: string;
   status: "In Progress" | "Completed";
 }
+
+export interface Adventurer {
+  id: number;
+  name: string;
+  characterClass: string;
+}
