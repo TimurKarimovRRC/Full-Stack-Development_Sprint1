@@ -6,14 +6,14 @@ interface AssignmentListProps {
     adventurers: Adventurer[];
     quests: Quest[];
     assignments: Assignment[];
-    setAssignments: (assignments: Assignment[]) => void;
+    removeAssignment: (id: number) => Promise<void>;
 }
 
 export function AssignmentList({
   adventurers,
   quests,
   assignments,
-  setAssignments,
+  removeAssignment
 }: AssignmentListProps) {
 
     // find adventurer's name by id
@@ -24,8 +24,8 @@ export function AssignmentList({
     const getQuestTitle = (id: number) =>
     quests.find((q) => q.id === id)?.title ?? "Unknown quest";
 
-    const handleRemove = (id: number) => {
-    setAssignments(assignments.filter((a) => a.id !== id));
+    const handleRemove = async (id: number) => {
+    removeAssignment(id);
     };
 
     if (assignments.length === 0) {
