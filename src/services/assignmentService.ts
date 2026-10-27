@@ -21,7 +21,7 @@ export const assignmentService = {
         return await assignmentRepository.create(newAssignment);
     },
 
-    removeAssingment: async(id: number): Promise<void> => {
+    removeAssignment: async(id: number): Promise<void> => {
         await assignmentRepository.delete(id);
     }
 
