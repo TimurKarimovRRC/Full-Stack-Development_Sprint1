@@ -1,30 +1,42 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import type { Quest } from "../Quests/Quests";
+import { useForm } from "../../hooks/useForm";
+import { useQuests } from "../../hooks/useQuests";
+import type { QuestDifficulty } from "../../types/quest";
 
-interface QuestSubmissionProps {
-    onQuestSubmit: (quest: Quest) => void;
+interface QuestSubmissionValues extends Record<string, string> {
+    title: string;
+    location: string;
+    difficulty: QuestDifficulty;
+    reward: string;
+    description: string;
 }
 
-export function QuestSubmission({ onQuestSubmit }: QuestSubmissionProps) {
+/**
+ * Uses the shared form hook for input presentation and the quest hook to submit
+ * validated quest data through the service and repository.
+ */
+export function QuestSubmission() {
     const [submitted, setSubmitted] = useState(false);
+    const { values, handleChange, reset } = useForm<QuestSubmissionValues>({
+        title: "",
+        location: "",
+        difficulty: "Medium",
+        reward: "",
+        description: "",
+    });
+    const { createQuest, isLoading, error } = useQuests();
 
-    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-
-        const formData = new FormData(event.currentTarget);
-        const nextQuest: Quest = {
-            id: Date.now(),
-            title: String(formData.get("title") ?? ""),
-            location: String(formData.get("location") ?? ""),
-            difficulty: String(formData.get("difficulty") ?? "Medium") as Quest["difficulty"],
-            description: String(formData.get("description") ?? ""),
-            reward: String(formData.get("reward") ?? "")
-        };
-
-        onQuestSubmit(nextQuest);
-        setSubmitted(true);
-        event.currentTarget.reset();
+        setSubmitted(false);
+        try {
+            await createQuest(values);
+            reset();
+            setSubmitted(true);
+        } catch {
+            setSubmitted(false);
+        }
     }
 
     return (
@@ -44,17 +56,17 @@ export function QuestSubmission({ onQuestSubmit }: QuestSubmissionProps) {
                 <div className="quest-form__grid">
                     <label>
                         Quest title
-                        <input name="title" type="text" placeholder="The Ember Crown" required />
+                        <input name="title" type="text" placeholder="The Ember Crown" value={values.title} onChange={handleChange} required />
                     </label>
 
                     <label>
                         Location
-                        <input name="location" type="text" placeholder="Ashen Valley" required />
+                        <input name="location" type="text" placeholder="Ashen Valley" value={values.location} onChange={handleChange} required />
                     </label>
 
                     <label>
                         Difficulty
-                        <select name="difficulty" defaultValue="Medium" required>
+                        <select name="difficulty" value={values.difficulty} onChange={handleChange} required>
                             <option>Easy</option>
                             <option>Medium</option>
                             <option>Hard</option>
@@ -64,16 +76,18 @@ export function QuestSubmission({ onQuestSubmit }: QuestSubmissionProps) {
 
                     <label>
                         Reward
-                        <input name="reward" type="text" placeholder="250 gold" required />
+                        <input name="reward" type="text" placeholder="250 gold" value={values.reward} onChange={handleChange} required />
                     </label>
                 </div>
 
                 <label>
                     Description
-                    <textarea name="description" rows={5} placeholder="Describe the mission and what awaits the adventurer..." required />
+                    <textarea name="description" rows={5} placeholder="Describe the mission and what awaits the adventurer..." value={values.description} onChange={handleChange} required />
                 </label>
 
-                <button type="submit">Submit quest</button>
+                <button type="submit" disabled={isLoading}>Submit quest</button>
+
+                {error && <p role="alert">{error}</p>}
 
                 {submitted && (
                     <p className="quest-form__success" role="status">
