@@ -1,22 +1,16 @@
+import { useAssignments } from "../../hooks/useAssignments";
 import { QuestAssignmentForm } from "../../components/QuestAssignmentForm/QuestAssignmentForm";
 import { AssignmentList } from "../../components/AssignmentList/AssignmentList";
-import type { Assignment, Adventurer } from "../../types/assignments";
-import type { Quest } from "../../components/Quests/Quests";
 import "./QuestAssignmentPage.css";
 
-interface QuestAssignmentPageProps {
-    adventurers: Adventurer[];
-    quests: Quest[];
-    assignments: Assignment[];
-    setAssignments: (assignments: Assignment[]) => void;
-}
 
-export function QuestAssignmentPage({
-    adventurers,
-    quests,
-    assignments,
-    setAssignments,
-}: QuestAssignmentPageProps) {
+
+export function QuestAssignmentPage (){
+
+    const { assignments, quests, adventurers, isLoading, addAssignment, removeAssignment} = useAssignments();
+
+    if (isLoading) 
+        return <p>Loading Assignments...</p>
 
     return (
 
@@ -30,15 +24,14 @@ export function QuestAssignmentPage({
             <QuestAssignmentForm
                 adventurers={adventurers}
                 quests={quests}
-                assignments={assignments}
-                setAssignments={setAssignments}
+                addAssignment={addAssignment}
             />
 
             <AssignmentList
                 adventurers={adventurers}
                 quests={quests}
                 assignments={assignments}
-                setAssignments={setAssignments}
+                removeAssignment={removeAssignment}
             />
         </section>    
     );
