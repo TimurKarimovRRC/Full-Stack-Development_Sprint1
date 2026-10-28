@@ -12,6 +12,11 @@ interface AdventurerCardProps {
     onRemove: () => void;
 }
 
+/**
+ * Uses useFormInput to manage field values and error messages.
+ * Validation rules come from adventurerService.
+ * The onAdd callback delegates creation to useAdventurers.
+ */
 
 export function AdventurersForm({ onAdd }: AdventurersFormProps) {
     const name = useFormInput();
@@ -114,6 +119,12 @@ export function AdventurersForm({ onAdd }: AdventurersFormProps) {
         </>
     );
 }
+
+
+/**
+ * Displays one adventurer and invokes the supplied removal callback.
+ * Data changes are handled outside this presentation component.
+ */
 
 export function AdventurerCard({
     name,

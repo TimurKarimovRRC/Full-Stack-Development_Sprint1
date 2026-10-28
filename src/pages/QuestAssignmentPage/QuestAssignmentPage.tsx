@@ -11,7 +11,11 @@ interface QuestAssignmentPageProps {
     setAssignments: (assignments: Assignment[]) => void;
 }
 
-
+/**
+ * Reuses useAdventurers to obtain the current shared roster.
+ * Adventurer data is retrieved through the service and repository
+ * and supplied to the assignment form and list.
+ */
 export function QuestAssignmentPage({
     quests,
     assignments,

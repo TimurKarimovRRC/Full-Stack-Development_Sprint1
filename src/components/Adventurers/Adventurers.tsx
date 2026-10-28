@@ -5,6 +5,12 @@ import {
 } from "../AdventurersForm/AdventurersForm";
 import "./Adventurers.css";
 
+/**
+ * Displays adventurers using useAdventurers.
+ * Actions pass through the hook, service, and repository,
+ * keeping business rules and data access outside this component.
+ */
+
 export function Adventurers() {
     const {
         adventurers,
