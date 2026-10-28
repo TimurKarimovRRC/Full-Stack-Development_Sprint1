@@ -13,14 +13,15 @@ import { QuestSubmission } from "./components/QuestSubmission/QuestSubmission";
 import { QuestAssignmentPage } from "./pages/QuestAssignmentPage/QuestAssignmentPage";
 
 import type { Assignment } from "./types/assignments";
-
-import adventurerData from "./data/Adventurers.json";
 import questData from "./data/Quests.json";
 
 import "./App.css";
 
 export function App() {
-    const [quests, setQuests] = useState<Quest[]>(questData as Quest[]);
+    const [quests, setQuests] = useState<Quest[]>(
+        questData as Quest[]
+    );
+
     const [assignments, setAssignments] = useState<Assignment[]>([]);
 
     const members = [
@@ -38,7 +39,10 @@ export function App() {
 
     return (
         <BrowserRouter>
-            <Layout title="Fantasy Quest Board" members={members}>
+            <Layout
+                title="Fantasy Quest Board"
+                members={members}
+            >
                 <Routes>
                     <Route
                         path="/"
@@ -68,7 +72,6 @@ export function App() {
                         path="/assignments"
                         element={
                             <QuestAssignmentPage
-                                adventurers={adventurerData}
                                 quests={quests}
                                 assignments={assignments}
                                 setAssignments={setAssignments}

@@ -1,9 +1,9 @@
+import { useFormInput } from "../../hooks/useFormInput";
+import * as adventurerService from "../../services/adventurerService";
+import type { AdventurerInput } from "../../types/adventurer";
+
 interface AdventurersFormProps {
-    name: string;
-    characterClass: string;
-    setName: (value: string) => void;
-    setCharacterClass: (value: string) => void;
-    onAdd: () => void;
+    onAdd: (input: AdventurerInput) => boolean;
 }
 
 interface AdventurerCardProps {
@@ -12,55 +12,119 @@ interface AdventurerCardProps {
     onRemove: () => void;
 }
 
-export function AdventurersForm({
-    name,
-    characterClass,
-    setName,
-    setCharacterClass,
-    onAdd,
-}: AdventurersFormProps) {
+/**
+ * Uses useFormInput to manage field values and error messages.
+ * Validation rules come from adventurerService.
+ * The onAdd callback delegates creation to useAdventurers.
+ */
+
+export function AdventurersForm({ onAdd }: AdventurersFormProps) {
+    const name = useFormInput();
+    const characterClass = useFormInput();
+
     return (
-        <form
-            onSubmit={(event) => {
-                event.preventDefault();
-                onAdd();
-            }}
-        >
-            <div>
-                <label htmlFor="adventurer-name">Name</label>
+        <>
+            <form
+                noValidate
+                onSubmit={(event) => {
+                    event.preventDefault();
 
-                <input
-                    id="adventurer-name"
-                    type="text"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    required
-                />
-            </div>
+                    const nameResult = name.validate((value) =>
+                        adventurerService.validateInput(value, "name")
+                    );
 
-            <div>
-                <label htmlFor="adventurer-class">Character class</label>
+                    const classResult = characterClass.validate((value) =>
+                        adventurerService.validateInput(
+                            value,
+                            "characterClass"
+                        )
+                    );
 
-                <input
-                    id="adventurer-class"
-                    type="text"
-                    value={characterClass}
-                    onChange={(event) =>
-                        setCharacterClass(event.target.value)
+                    if (!nameResult.isValid || !classResult.isValid) {
+                        return;
                     }
-                    required
-                />
-            </div>
 
-            <button
-                type="submit"
-                disabled={!name.trim() || !characterClass.trim()}
+                    const added = onAdd({
+                        name: name.value,
+                        characterClass: characterClass.value,
+                    });
+
+                    if (added) {
+                        name.reset();
+                        characterClass.reset();
+                    }
+                }}
             >
-                Add adventurer
-            </button>
-        </form>
+                <div>
+                    <label htmlFor="adventurer-name">Name</label>
+
+                    <input
+                        id="adventurer-name"
+                        type="text"
+                        value={name.value}
+                        onChange={(event) =>
+                            name.setValue(event.target.value)
+                        }
+                        aria-invalid={name.messages.length > 0}
+                        aria-describedby="adventurer-name-errors"
+                        required
+                    />
+
+                    <div
+                        id="adventurer-name-errors"
+                        aria-live="polite"
+                    >
+                        {name.messages.map((message) => (
+                            <p key={message}>{message}</p>
+                        ))}
+                    </div>
+                </div>
+
+                <div>
+                    <label htmlFor="adventurer-class">
+                        Character class
+                    </label>
+
+                    <input
+                        id="adventurer-class"
+                        type="text"
+                        value={characterClass.value}
+                        onChange={(event) =>
+                            characterClass.setValue(event.target.value)
+                        }
+                        aria-invalid={characterClass.messages.length > 0}
+                        aria-describedby="adventurer-class-errors"
+                        required
+                    />
+
+                    <div
+                        id="adventurer-class-errors"
+                        aria-live="polite"
+                    >
+                        {characterClass.messages.map((message) => (
+                            <p key={message}>{message}</p>
+                        ))}
+                    </div>
+                </div>
+
+                <button type="submit">
+                    Add adventurer
+                </button>
+            </form>
+
+            <p>
+                Preview: {name.value || "Name"} (
+                {characterClass.value || "Class"})
+            </p>
+        </>
     );
 }
+
+
+/**
+ * Displays one adventurer and invokes the supplied removal callback.
+ * Data changes are handled outside this presentation component.
+ */
 
 export function AdventurerCard({
     name,
