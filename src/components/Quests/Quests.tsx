@@ -1,17 +1,20 @@
-export interface Quest {
-    id: number;
-    title: string;
-    location: string;
-    difficulty: "Easy" | "Medium" | "Hard" | "Expert";
-    description: string;
-    reward: string;
-}
+import { useQuests } from "../../hooks/useQuests";
+export type { Quest } from "../../types/quest";
 
-interface QuestBoardsProps {
-    quests: Quest[];
-}
+/**
+ * Renders quests loaded through the quest hook instead of receiving app-level quest props.
+ */
+export function QuestBoards() {
+    const { quests, isLoading, error } = useQuests();
 
-export function QuestBoards({ quests }: QuestBoardsProps) {
+    if (isLoading) {
+        return <p role="status">Loading quests...</p>;
+    }
+
+    if (error) {
+        return <p role="alert">{error}</p>;
+    }
+
     return (
         <section className="quest-assignments">
             <div className="section-heading">

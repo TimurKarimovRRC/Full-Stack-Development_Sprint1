@@ -6,4 +6,8 @@ export interface Assignment {
   status: "In Progress" | "Completed";
 }
 
-export type { Adventurer } from "./adventurer";
+export interface Adventurer {
+  id: number;
+  name: string;
+  characterClass: string;
+}
