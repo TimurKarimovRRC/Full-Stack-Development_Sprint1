@@ -8,20 +8,19 @@ import {
 
 import { Adventurers } from "./components/Adventurers/Adventurers";
 import { Layout } from "./components/Layout/Layout";
-import { QuestBoards } from "./components/Quests/Quests";
+import { QuestBoards, type Quest } from "./components/Quests/Quests";
 import { QuestSubmission } from "./components/QuestSubmission/QuestSubmission";
 import { QuestAssignmentPage } from "./pages/QuestAssignmentPage/QuestAssignmentPage";
 
 import type { Assignment } from "./types/assignments";
+import questData from "./data/Quests.json";
 
 import "./App.css";
 
-/**
- * Defines application routes and the shared layout.
- * Feature pages retrieve adventurers and quests through their hooks.
- * Assignment state remains shared through App.
- */
 export function App() {
+    const [quests, setQuests] = useState<Quest[]>(
+        questData as Quest[]
+    );
     const [assignments, setAssignments] = useState<Assignment[]>([]);
 
     const members = [
@@ -29,6 +28,13 @@ export function App() {
         "Aum Mistry",
         "Mackinley Wanless",
     ];
+
+    function handleQuestSubmit(newQuest: Quest) {
+        setQuests((currentQuests) => [
+            newQuest,
+            ...currentQuests,
+        ]);
+    }
 
     return (
         <BrowserRouter>
@@ -44,12 +50,16 @@ export function App() {
 
                     <Route
                         path="/quests"
-                        element={<QuestBoards />}
+                        element={<QuestBoards quests={quests} />}
                     />
 
                     <Route
                         path="/quest-submission"
-                        element={<QuestSubmission />}
+                        element={
+                            <QuestSubmission
+                                onQuestSubmit={handleQuestSubmit}
+                            />
+                        }
                     />
 
                     <Route
@@ -61,6 +71,7 @@ export function App() {
                         path="/assignments"
                         element={
                             <QuestAssignmentPage
+                                quests={quests}
                                 assignments={assignments}
                                 setAssignments={setAssignments}
                             />
