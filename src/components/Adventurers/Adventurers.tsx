@@ -29,6 +29,7 @@ export function Adventurers() {
 
             {error && <p role="alert">{error}</p>}
 
+ы
             <ul>
                 {adventurers.map((adventurer) => (
                     <AdventurerCard
