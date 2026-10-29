@@ -15,7 +15,7 @@ export const assignmentService = {
 
         const newAssignment: Assignment = {
             ...assignmentData,
-            id: Date.now()
+            id: Math.floor(Math.random()*1000000)
         };
 
         return await assignmentRepository.create(newAssignment);
