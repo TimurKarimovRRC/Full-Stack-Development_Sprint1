@@ -1,29 +1,37 @@
 import { QuestAssignmentForm } from "../../components/QuestAssignmentForm/QuestAssignmentForm";
 import { AssignmentList } from "../../components/AssignmentList/AssignmentList";
+
 import { useAdventurers } from "../../hooks/useAdventurers";
+import { useQuests } from "../../hooks/useQuests";
+
 import type { Assignment } from "../../types/assignments";
-import type { Quest } from "../../components/Quests/Quests";
+
 import "./QuestAssignmentPage.css";
 
 interface QuestAssignmentPageProps {
-    quests: Quest[];
     assignments: Assignment[];
     setAssignments: (assignments: Assignment[]) => void;
 }
 
-
-
 /**
- * Reuses useAdventurers to obtain the current shared roster.
- * Adventurer data is retrieved through the service and repository
- * and supplied to the assignment form and list.
+ * Retrieves current adventurers and quests through their feature hooks.
+ * Each hook delegates data access to its service and repository.
+ * Newly created characters and quests become available for assignment.
  */
 export function QuestAssignmentPage({
-    quests,
     assignments,
     setAssignments,
 }: QuestAssignmentPageProps) {
     const { adventurers } = useAdventurers();
+    const { quests, isLoading, error } = useQuests();
+
+    if (isLoading) {
+        return <p role="status">Loading quests...</p>;
+    }
+
+    if (error) {
+        return <p role="alert">{error}</p>;
+    }
 
     return (
         <section className="quest-assignment-page">
