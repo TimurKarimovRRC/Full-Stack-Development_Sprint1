@@ -1,6 +1,7 @@
 import type { Assignment } from "../../types/assignments";
 import type { Adventurer } from "../../types/adventurer";
 import type { Quest } from "../Quests/Quests";
+import "./AssignmentList.css"
 
 /**
  * AssignmentList
