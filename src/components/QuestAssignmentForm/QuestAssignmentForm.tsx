@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { Assignment, Adventurer } from "../../types/assignments";
+import type { Assignment } from "../../types/assignments";
+import type { Adventurer } from "../../types/adventurer";
 import type { Quest } from "../Quests/Quests";
 import "./QuestAssignmentForm.css";
 

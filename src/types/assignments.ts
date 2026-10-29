@@ -5,5 +5,3 @@ export interface Assignment {
     dueDate: string;
     status: "In Progress" | "Completed";
 }
-
-export type { Adventurer } from "./adventurer";

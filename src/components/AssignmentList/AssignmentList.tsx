@@ -1,6 +1,7 @@
-import type { Assignment, Adventurer } from "../../types/assignments.ts";
-import type { Quest } from "../Quests/Quests.tsx";
-import "./AssignmentList.css";
+import type { Assignment } from "../../types/assignments";
+import type { Adventurer } from "../../types/adventurer";
+import type { Quest } from "../Quests/Quests";
+import "./AssignmentList.css"
 
 /**
  * AssignmentList
