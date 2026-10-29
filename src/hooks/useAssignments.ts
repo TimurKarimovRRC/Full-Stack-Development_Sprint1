@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import type { Assignment, Adventurer } from "../types/assignments";
-import type { Quest } from "../components/Quests/Quests";
+import type { Adventurer } from "../types/adventurer";
+import type { Quest } from "../types/quest";
+import type { Assignment} from "../types/assignments";
 import { assignmentService } from "../services/assignmentService";
-
-import adventurerData from "../data/Adventurers.json";
-import questData from "../data/Quests.json";
+import { questRepository } from "../repositories/questRepository";
+import { adventurerRepo } from "../repositories/adventurerRepo";
 
 export function useAssignments() {
     const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -16,11 +16,12 @@ export function useAssignments() {
         async function loadData() {
 
             const loadedAssignments = await assignmentService.getAssignments();
+            const loadedQuests = await questRepository.getAll();
+            const loadedAdventurers = await adventurerRepo.getAll();
+            
             setAssignments(loadedAssignments);
-
-            setQuests(questData as Quest[]);
-            setAdventurers(adventurerData as Adventurer[]);
-
+            setQuests(loadedQuests);
+            setAdventurers(loadedAdventurers);
             setIsLoading(false);
         }
         loadData();
