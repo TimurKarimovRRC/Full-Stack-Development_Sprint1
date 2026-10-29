@@ -6,6 +6,8 @@ interface QuestSubmissionProps {
     onQuestSubmit: (quest: Quest) => void;
 }
 
+
+
 export function QuestSubmission({ onQuestSubmit }: QuestSubmissionProps) {
     const [submitted, setSubmitted] = useState(false);
 

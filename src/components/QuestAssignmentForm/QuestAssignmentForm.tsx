@@ -10,6 +10,8 @@ interface QuestAssignmentFormProps {
     setAssignments: (assignments: Assignment[]) => void;
 }
 
+
+
 export function QuestAssignmentForm({
     adventurers,
     quests,

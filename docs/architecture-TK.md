@@ -137,3 +137,4 @@ The current interface provides creation and removal.
 
 Deleting an adventurer does not delete their assignments.
 The assignment list displays Unknown adventurer for a missing record.
+

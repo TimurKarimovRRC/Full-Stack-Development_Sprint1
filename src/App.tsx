@@ -6,6 +6,8 @@ import {
     Routes,
 } from "react-router-dom";
 
+
+
 import { Adventurers } from "./components/Adventurers/Adventurers";
 import { Layout } from "./components/Layout/Layout";
 import { QuestBoards, type Quest } from "./components/Quests/Quests";

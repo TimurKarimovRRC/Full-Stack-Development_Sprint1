@@ -69,3 +69,4 @@ export function subscribe(listener: () => void) {
 export function getVersion() {
     return adventurerRepo.getVersion();
 }
+

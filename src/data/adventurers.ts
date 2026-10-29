@@ -47,3 +47,4 @@ export const adventurerData: Adventurer[] = [
     { id: 44, name: "Zephyr Sunwhisper", characterClass: "Necromancer" },
     { id: 45, name: "Finnick Spellbinder", characterClass: "Monk" },
 ];
+

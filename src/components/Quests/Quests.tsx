@@ -11,6 +11,8 @@ interface QuestBoardsProps {
     quests: Quest[];
 }
 
+
+
 export function QuestBoards({ quests }: QuestBoardsProps) {
     return (
         <section className="quest-assignments">

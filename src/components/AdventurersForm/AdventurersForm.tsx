@@ -18,6 +18,8 @@ interface AdventurerCardProps {
  * The onAdd callback delegates creation to useAdventurers.
  */
 
+
+
 export function AdventurersForm({ onAdd }: AdventurersFormProps) {
     const name = useFormInput();
     const characterClass = useFormInput();

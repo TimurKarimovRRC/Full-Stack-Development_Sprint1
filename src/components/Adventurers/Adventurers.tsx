@@ -11,6 +11,8 @@ import "./Adventurers.css";
  * keeping business rules and data access outside this component.
  */
 
+
+
 export function Adventurers() {
     const {
         adventurers,
