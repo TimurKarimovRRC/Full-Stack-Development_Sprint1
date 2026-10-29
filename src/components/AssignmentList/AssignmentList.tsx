@@ -1,19 +1,27 @@
-import type { Assignment, Adventurer } from "../../types/assignments.ts";
-import type { Quest } from "../Quests/Quests.tsx";
-import "./AssignmentList.css";
+import type { Assignment } from "../../types/assignments";
+import type { Adventurer } from "../../types/adventurer";
+import type { Quest } from "../Quests/Quests";
+import "./AssignmentList.css"
+
+/**
+ * AssignmentList
+ * Renders a list of assigned quests. It displays the adventurer, quest name,
+ * due date, and status. Provides a button to remove an assignment, which 
+ * triggers the `removeAssignment` handler passed from the parent page.
+ */
 
 interface AssignmentListProps {
     adventurers: Adventurer[];
     quests: Quest[];
     assignments: Assignment[];
-    setAssignments: (assignments: Assignment[]) => void;
+    removeAssignment: (id: number) => Promise<void>;
 }
 
 export function AssignmentList({
   adventurers,
   quests,
   assignments,
-  setAssignments,
+  removeAssignment
 }: AssignmentListProps) {
 
     // find adventurer's name by id
@@ -24,8 +32,8 @@ export function AssignmentList({
     const getQuestTitle = (id: number) =>
     quests.find((q) => q.id === id)?.title ?? "Unknown quest";
 
-    const handleRemove = (id: number) => {
-    setAssignments(assignments.filter((a) => a.id !== id));
+    const handleRemove = async (id: number) => {
+        await removeAssignment(id);
     };
 
     if (assignments.length === 0) {
