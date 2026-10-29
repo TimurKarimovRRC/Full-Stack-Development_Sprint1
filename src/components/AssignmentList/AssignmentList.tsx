@@ -32,7 +32,7 @@ export function AssignmentList({
     quests.find((q) => q.id === id)?.title ?? "Unknown quest";
 
     const handleRemove = async (id: number) => {
-    removeAssignment(id);
+        await removeAssignment(id);
     };
 
     if (assignments.length === 0) {
