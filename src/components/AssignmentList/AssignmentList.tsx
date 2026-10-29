@@ -2,6 +2,13 @@ import type { Assignment, Adventurer } from "../../types/assignments.ts";
 import type { Quest } from "../Quests/Quests.tsx";
 import "./AssignmentList.css";
 
+/**
+ * AssignmentList
+ * Renders a list of assigned quests. It displays the adventurer, quest name,
+ * due date, and status. Provides a button to remove an assignment, which 
+ * triggers the `removeAssignment` handler passed from the parent page.
+ */
+
 interface AssignmentListProps {
     adventurers: Adventurer[];
     quests: Quest[];

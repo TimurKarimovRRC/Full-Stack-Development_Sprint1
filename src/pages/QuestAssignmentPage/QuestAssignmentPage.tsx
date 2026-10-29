@@ -3,6 +3,12 @@ import { QuestAssignmentForm } from "../../components/QuestAssignmentForm/QuestA
 import { AssignmentList } from "../../components/AssignmentList/AssignmentList";
 import "./QuestAssignmentPage.css";
 
+/**
+ * QuestAssignmentPage
+ * The main feature page for managing quest assignments.
+ * It utilizes the `useAssignments` hook to fetch data and handle state,
+ * passing the data and action handlers down to the form and list components.
+ */
 
 
 export function QuestAssignmentPage (){

@@ -3,6 +3,14 @@ import type { Assignment, Adventurer } from "../../types/assignments";
 import type { Quest } from "../Quests/Quests";
 import "./QuestAssignmentForm.css";
 
+
+/**
+ * QuestAssignmentForm
+ * A form component that allows users to assign a quest to an adventurer.
+ * It handles local form state, but delegates the actual creation and validation
+ * to the `addAssignment` function passed down from the hook.
+ */
+
 interface QuestAssignmentFormProps {
     adventurers: Adventurer[];
     quests: Quest[];
