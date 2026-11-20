@@ -1,4 +1,5 @@
 import type { ErrorRequestHandler } from "express";
+import { CorsOriginError } from "./corsConfig.js";
 
 export const errorHandler: ErrorRequestHandler = (
     error,
@@ -8,6 +9,11 @@ export const errorHandler: ErrorRequestHandler = (
 ) => {
     if (response.headersSent) {
         next(error);
+        return;
+    }
+
+    if (error instanceof CorsOriginError) {
+        response.status(403).json({ error: error.message });
         return;
     }
 
