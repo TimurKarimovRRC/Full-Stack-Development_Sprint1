@@ -5,11 +5,46 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+
+enum QuestDifficulty {
+  Easy
+  Medium
+  Hard
+  Expert
+}
+
+model Quest {
+  id          Int             @id @default(autoincrement())
+  title       String
+  location    String
+  difficulty  QuestDifficulty
+  description String
+  reward      String
+}
+
+enum AssignmentStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+model QuestAssignment {
+  id            Int                    @id @default(autoincrement())
+  questId       Int
+  adventurerId  Int
+  status        AssignmentStatus        @default(IN_PROGRESS)
+  dueDate       DateTime
+  completedAt   DateTime?
+
+  quest        Quest        @relation(fields: [questId], references: [id], onDelete: cascade)
+  adventurer   Adventurer   @relation(fields: [adventurerId], references: [id], onDelete: cascade)
+
+  @@map("quest-assignments")
 }
