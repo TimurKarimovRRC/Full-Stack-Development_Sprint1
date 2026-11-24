@@ -13,6 +13,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Adventurer {
+  id          Int           @id @default(autoincrement())
+  name        String
+
+  assignments QuestAssignment[]
+}
 
 enum QuestDifficulty {
   Easy
@@ -28,6 +34,8 @@ model Quest {
   difficulty  QuestDifficulty
   description String
   reward      String
+
+  assignments QuestAssignment[]
 }
 
 enum AssignmentStatus {
@@ -43,8 +51,8 @@ model QuestAssignment {
   dueDate       DateTime
   completedAt   DateTime?
 
-  quest        Quest        @relation(fields: [questId], references: [id], onDelete: cascade)
-  adventurer   Adventurer   @relation(fields: [adventurerId], references: [id], onDelete: cascade)
+  quest        Quest        @relation(fields: [questId], references: [id])
+  adventurer   Adventurer   @relation(fields: [adventurerId], references: [id])
 
   @@map("quest-assignments")
 }
