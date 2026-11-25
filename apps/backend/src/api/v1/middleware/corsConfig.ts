@@ -47,6 +47,8 @@ function getAllowedOrigins(): Set<string> {
 const allowedOrigins = getAllowedOrigins();
 
 export const corsMiddleware = cors({
+    methods: ["GET", "POST", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type"],
     origin(origin, callback) {
         if (!origin || allowedOrigins.has(origin)) {
             callback(null, true);
