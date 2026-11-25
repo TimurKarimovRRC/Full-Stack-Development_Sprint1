@@ -6,3 +6,8 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+model Adventurer {
+  id             Int    @id @default(autoincrement())
+  name           String
+  characterClass String
+}
