@@ -5,3 +5,9 @@ export function getAdventurers() {
         orderBy: { id: "asc" },
     });
 }
+
+export function createAdventurer(name: string, characterClass: string) {
+    return prisma.adventurer.create({
+        data: { name, characterClass },
+    });
+}
