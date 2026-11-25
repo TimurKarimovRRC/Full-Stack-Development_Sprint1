@@ -24,8 +24,7 @@ export const assignmentRepository = {
         return response.json()
     },
 
-    create: async (data: { questId: number, adventuereId: number, dueDate: string 
-    }): Promise<QuestAssignment> => {
+    create: async (data: Omit<QuestAssignment, "id" | "status" | "completedAt">): Promise<QuestAssignment> => {
         const response = await fetch(`${API_BASE_URL}/assignments`, {
             method: "POST",
             headers: { "Content-Type": "application/json"},
