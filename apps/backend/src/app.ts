@@ -5,6 +5,7 @@ import { errorHandler } from "./api/v1/middleware/errorHandler.js";
 import { questRoutes } from "./api/v1/routes/questRoutes.js";
 
 const app = express();
+const frontendUrl = "http://localhost:5173";
 
 app.use(corsMiddleware);
 app.use(express.json());
