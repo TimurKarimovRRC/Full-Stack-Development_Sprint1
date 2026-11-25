@@ -3,5 +3,5 @@ export interface Assignment {
     adventurerId: number;
     questId: number;
     dueDate: string;
-    status: "In Progress" | "Completed";
+    status: "IN_PROGRESS" | "COMPLETED";
 }
