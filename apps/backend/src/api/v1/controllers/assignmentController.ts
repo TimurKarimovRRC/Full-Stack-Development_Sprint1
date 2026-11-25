@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
 import { assignmentService } from "../services/assignmentService.js";
 
-export const assingmentController = {
+export const assignmentController = {
 
     getAssignments: async (_req: Request, res: Response, next: NextFunction) => {
 
