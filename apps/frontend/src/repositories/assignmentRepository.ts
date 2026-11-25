@@ -1,29 +1,57 @@
-import type { Assignment } from "../types/assignments";
-import { mockAssignments } from "../data/mockAssignments";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-class AssignmentRepository {
-
-    private assignments: Assignment[] = [...mockAssignments];
-
-    async getAll(): Promise<Assignment[]> {
-        return [...this.assignments];
-    }
-
-    async create(newAssignment: Assignment): Promise<Assignment> {
-        this.assignments.push(newAssignment);
-        return newAssignment;
-    }
-
-    async delete(id: number): Promise<void> {
-        this.assignments = this.assignments.filter((a) => a.id !== id);
-    }
-
-    async update(id: number, updates: Partial<Assignment>): Promise<Assignment | null> {
-        const index = this.assignments.findIndex((a) => a.id === id);
-        if (index === -1) return null;
-        this.assignments[index] = { ...this.assignments[index], ...updates };
-        return this.assignments[index];
+export interface QuestAssignment {
+    id: number,
+    questId: number,
+    adventurerId: number,
+    status: "IN_PROGRESS" | "COMPLETED";
+    dueDate: string;
+    completedAt: string | null;
+    quest?: {
+        title: string;
+        reward: string;
+    };
+    adventuere?: {
+        name: string;
     }
 }
 
-export const assignmentRepository = new AssignmentRepository();
+export const assignmentRepository = {
+
+    getAll: async (): Promise<QuestAssignment[]> => {
+        const response = await fetch(`${API_BASE_URL}/assignments`);
+        if (!response.ok) throw new Error("Failed to fetch assignments.");
+        return response.json()
+    },
+
+    create: async (data: { questId: number, adventuereId: number, dueDate: string 
+    }): Promise<QuestAssignment> => {
+        const response = await fetch(`${API_BASE_URL}/assignments`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) throw new Error("Failed to create assignment.");
+        return response.json();
+    },
+
+    complete: async (id: number): Promise<QuestAssignment> => {
+        const response = await fetch(`${API_BASE_URL}/assignments/${id}/complete`, {
+            method: "PATCH"
+        });
+
+        if (!response.ok) throw new Error("Failed to complete assignment.");
+        return response.json();
+    },
+
+    remove: async (id: number): Promise<void> => {
+        const response = await fetch(`${API_BASE_URL}/assignments/${id}`, {
+            method: "DELETE"
+        });
+        if (!response.ok) throw new Error("Failed to delete assignment.");
+    }
+    
+    
+}
+
