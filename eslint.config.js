@@ -28,4 +28,11 @@ export default defineConfig([
       globals: globals.node,
     },
   },
+  {
+    files: ['shared/**/*.ts'],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])

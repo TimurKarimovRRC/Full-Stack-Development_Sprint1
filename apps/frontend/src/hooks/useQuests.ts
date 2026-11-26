@@ -15,7 +15,7 @@ function getErrorMessage(error: unknown): string {
  * - `error`: the latest load or mutation error message, or `null` when there is none.
  * - `refresh`: reloads the list from the service.
  * - `createQuest`: validates and creates a quest through the service, then adds it to the list.
- * - `updateQuest`: validates and updates a quest through the service, then replaces it in the list.
+ * - `updateQuestReward`: validates and updates a quest reward through the service.
  * - `deleteQuest`: deletes a quest through the service, then removes it from the list.
  */
 export function useQuests() {
@@ -72,10 +72,10 @@ export function useQuests() {
         }
     }, []);
 
-    const updateQuest = useCallback(async (quest: Quest) => {
+    const updateQuestReward = useCallback(async (id: number, reward: string) => {
         setError(null);
         try {
-            const updatedQuest = await questService.update(quest);
+            const updatedQuest = await questService.updateReward(id, reward);
             setQuests((currentQuests) =>
                 currentQuests.map((currentQuest) =>
                     currentQuest.id === updatedQuest.id ? updatedQuest : currentQuest,
@@ -107,7 +107,7 @@ export function useQuests() {
         error,
         refresh,
         createQuest,
-        updateQuest,
+        updateQuestReward,
         deleteQuest,
     };
 }

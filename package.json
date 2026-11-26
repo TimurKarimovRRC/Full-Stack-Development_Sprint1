@@ -10,7 +10,7 @@
     "start:backend": "npm run dev --workspace=@questboard/backend",
     "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "build": "npm run build --workspace=@questboard/frontend && npm run build --workspace=@questboard/backend",
-    "lint": "eslint apps",
+    "lint": "eslint apps shared",
     "typecheck": "tsc -b"
   },
   "devDependencies": {

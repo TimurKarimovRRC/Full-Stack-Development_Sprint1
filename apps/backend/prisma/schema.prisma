@@ -11,3 +11,19 @@ model Adventurer {
   name           String
   characterClass String
 }
+
+enum QuestDifficulty {
+  Easy
+  Medium
+  Hard
+  Expert
+}
+
+model Quest {
+  id          Int             @id @default(autoincrement())
+  title       String
+  location    String
+  difficulty  QuestDifficulty
+  description String
+  reward      String
+}
