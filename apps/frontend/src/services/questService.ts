@@ -38,25 +38,22 @@ export const questService = {
         return questRepository.getAll();
     },
 
-    getById(id: number): Promise<Quest | undefined> {
-        return questRepository.getById(id);
-    },
-
     async create(quest: NewQuest): Promise<Quest> {
         const normalizedQuest = normalizeQuest(quest);
-        const existingQuests = await questRepository.getAll();
-        const id = Math.max(0, ...existingQuests.map((item) => item.id)) + 1;
-
-        return questRepository.create({ id, ...normalizedQuest });
+        return questRepository.create(normalizedQuest);
     },
 
-    async update(quest: Quest): Promise<Quest> {
-        if (!Number.isInteger(quest.id) || quest.id <= 0) {
+    async updateReward(id: number, reward: string): Promise<Quest> {
+        if (!Number.isInteger(id) || id <= 0) {
             throw new Error("Quest ID must be a positive integer.");
         }
 
-        const normalizedQuest = normalizeQuest(quest);
-        return questRepository.update({ id: quest.id, ...normalizedQuest });
+        const normalizedReward = reward.trim();
+        if (!normalizedReward) {
+            throw new Error("Quest reward is required.");
+        }
+
+        return questRepository.updateReward(id, normalizedReward);
     },
 
     delete(id: number): Promise<void> {
