@@ -18,7 +18,7 @@ export function useAssignments() {
             try { 
                 const loadedAssignments = await assignmentService.getAssignments();
                 const loadedQuests = await questRepository.getAll();
-                const loadedAdventurers = await adventurerRepo.getAll();
+                const loadedAdventurers = await adventurerRepo.fetchAll();
                 
                 setAssignments(loadedAssignments);
                 setQuests(loadedQuests);

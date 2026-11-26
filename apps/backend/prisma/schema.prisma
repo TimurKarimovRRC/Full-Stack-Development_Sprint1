@@ -6,18 +6,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model Adventurer {
-  id             Int    @id @default(autoincrement())
-  name           String
-  characterClass String
-}
 
 model Adventurer {
-  id             Int    @id @default(autoincrement())
+  id             Int               @id @default(autoincrement())
   name           String
   characterClass String
-
-  assignments QuestAssignment[]
+  assignments    QuestAssignment[]
 }
 
 enum QuestDifficulty {
@@ -28,13 +22,12 @@ enum QuestDifficulty {
 }
 
 model Quest {
-  id          Int             @id @default(autoincrement())
+  id          Int               @id @default(autoincrement())
   title       String
   location    String
   difficulty  QuestDifficulty
   description String
   reward      String
-
   assignments QuestAssignment[]
 }
 
