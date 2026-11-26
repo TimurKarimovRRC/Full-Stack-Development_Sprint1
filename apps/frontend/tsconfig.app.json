@@ -19,5 +19,5 @@
     /* Linting */
     "erasableSyntaxOnly": true
   },
-  "include": ["src", "../../shared/types/**/*.ts"]
+  "include": ["src", "../../shared/**/*.ts"]
 }

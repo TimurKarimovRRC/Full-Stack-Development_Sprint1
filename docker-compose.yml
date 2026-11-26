@@ -1,10 +1,6 @@
-version: '3.8'
-
 services:
-  db:
-    image: postgres:15-alpine
-    container_name: questboard-postgres
-    restart: always
+  postgres:
+    image: postgres:17-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -12,7 +8,12 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - questboard-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d questboard_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  postgres_data:
+  questboard-postgres-data:

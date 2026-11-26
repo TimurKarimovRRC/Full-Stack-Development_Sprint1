@@ -8,11 +8,14 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "types": ["node"],
-    "rootDir": "src",
+    "paths": {
+      "@shared/*": ["../../shared/types/*"]
+    },
+    "rootDir": "../..",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src", "../../shared/types/**/*.ts"]
 }

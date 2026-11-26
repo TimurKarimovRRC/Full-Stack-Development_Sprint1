@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,8 +8,9 @@ datasource db {
 }
 
 model Adventurer {
-  id          Int           @id @default(autoincrement())
-  name        String
+  id             Int    @id @default(autoincrement())
+  name           String
+  characterClass String
 
   assignments QuestAssignment[]
 }
@@ -44,15 +39,15 @@ enum AssignmentStatus {
 }
 
 model QuestAssignment {
-  id            Int                    @id @default(autoincrement())
-  questId       Int
-  adventurerId  Int
-  status        AssignmentStatus        @default(IN_PROGRESS)
-  dueDate       DateTime
-  completedAt   DateTime?
+  id           Int              @id @default(autoincrement())
+  questId      Int
+  adventurerId Int
+  status       AssignmentStatus @default(IN_PROGRESS)
+  dueDate      DateTime
+  completedAt  DateTime?
 
-  quest        Quest        @relation(fields: [questId], references: [id])
-  adventurer   Adventurer   @relation(fields: [adventurerId], references: [id])
+  quest      Quest      @relation(fields: [questId], references: [id])
+  adventurer Adventurer @relation(fields: [adventurerId], references: [id])
 
   @@map("quest_assignments")
 }
