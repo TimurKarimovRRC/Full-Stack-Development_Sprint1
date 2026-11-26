@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import * as adventurerService from "../services/adventurerService";
 import type { AdventurerInput } from "../types/adventurer";
 
@@ -8,46 +8,56 @@ export function useAdventurers() {
         adventurerService.getVersion
     );
 
-    const adventurers = adventurerService.getAdventurers();
-    const [error, setError] = useState("");
+const [ready, setReady] = useState(false);
+const [error, setError] = useState("");
+const adventurers = ready ? adventurerService.getAdventurers() : null;
 
-    function runAction(action: () => void): boolean {
-        try {
-            action();
-            setError("");
+useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
 
-            return true;
-        } catch (cause) {
-            setError(
-                cause instanceof Error
-                    ? cause.message
-                    : "Unable to update adventurers."
-            );
+    adventurerService.loadAdventurers(signal)
+        .then(() => {
+            if (!signal.aborted) setReady(true);
+        })
+        .catch((cause: unknown) => {
+            if (!signal.aborted) {
+                setError(cause instanceof Error ? cause.message : "Unable to load adventurers.");
+            }
+        });
 
-            return false;
-        }
-    }
+    return () => controller.abort();
+}, []);
 
-    function addAdventurer(input: AdventurerInput): boolean {
-        return runAction(() =>
-            adventurerService.createAdventurer(input)
+async function runAction(action: () => Promise<unknown>): Promise<boolean> {
+    try {
+        await action();
+        setError("");
+        return true;
+    } catch (cause) {
+        setError(
+            cause instanceof Error
+                ? cause.message
+                : "Unable to update adventurers."
         );
+        return false;
     }
+}
 
-    function updateAdventurer(
-        id: number,
-        input: AdventurerInput
-    ): boolean {
-        return runAction(() =>
-            adventurerService.updateAdventurer(id, input)
-        );
-    }
+function addAdventurer(input: AdventurerInput): Promise<boolean> {
+    return runAction(() => adventurerService.createAdventurer(input));
+}
 
-    function removeAdventurer(id: number): boolean {
-        return runAction(() =>
-            adventurerService.deleteAdventurer(id)
-        );
-    }
+function updateAdventurer(
+    id: number,
+    input: AdventurerInput
+): Promise<boolean> {
+    return runAction(() => adventurerService.updateAdventurer(id, input));
+}
+
+function removeAdventurer(id: number): Promise<boolean> {
+    return runAction(() => adventurerService.deleteAdventurer(id));
+}
 
     return {
         adventurers,

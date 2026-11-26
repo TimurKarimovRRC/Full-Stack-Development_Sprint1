@@ -1,14 +1,7 @@
 import { adventurerData } from "../data/adventurers";
-import type {
-    Adventurer,
-    AdventurerInput,
-} from "../types/adventurer";
+import type { Adventurer, AdventurerInput } from "../types/adventurer";
 
 let adventurers: Adventurer[] = structuredClone(adventurerData);
-
-let nextId =
-    Math.max(0, ...adventurers.map((adventurer) => adventurer.id)) + 1;
-
 let version = 0;
 
 const listeners = new Set<() => void>();
@@ -19,6 +12,23 @@ function notifyChanges() {
 }
 
 export const adventurerRepo = {
+    async fetchAll(signal?: AbortSignal): Promise<Adventurer[]> {
+        const response = await fetch("/api/adventurers", { signal });
+
+        if (!response.ok) {
+            throw new Error(`Unable to load adventurers (${response.status}).`);
+        }
+
+        const rows: Adventurer[] = await response.json();
+
+        if (!signal?.aborted) {
+            adventurers = structuredClone(rows);
+            notifyChanges();
+        }
+
+        return rows;
+    },
+
     getAll(): Adventurer[] {
         return structuredClone(adventurers);
     },
@@ -29,48 +39,56 @@ export const adventurerRepo = {
         );
     },
 
-    create(input: AdventurerInput): Adventurer {
-        const adventurer: Adventurer = {
-            ...input,
-            id: nextId++,
-        };
+    async create(input: AdventurerInput): Promise<Adventurer> {
+        const response = await fetch("/api/adventurers", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(input),
+        });
 
-        adventurers = [...adventurers, adventurer];
-
-        notifyChanges();
-
-        return { ...adventurer };
-    },
-
-    update(id: number, input: AdventurerInput): Adventurer {
-        if (!adventurers.some((adventurer) => adventurer.id === id)) {
-            throw new Error("Adventurer not found.");
+        if (!response.ok) {
+            throw new Error(`Unable to add adventurer (${response.status}).`);
         }
 
-        const updated: Adventurer = {
-            ...input,
-            id,
-        };
-
-        adventurers = adventurers.map((adventurer) =>
-            adventurer.id === id ? updated : adventurer
-        );
-
+        const created: Adventurer = await response.json();
+        adventurers = [...adventurers, created];
         notifyChanges();
 
-        return { ...updated };
+        return { ...created };
     },
 
-    remove(id: number): void {
-        if (!adventurers.some((adventurer) => adventurer.id === id)) {
-            throw new Error("Adventurer not found.");
-        }
+   async update(id: number, input: AdventurerInput): Promise<Adventurer> {
+    const response = await fetch(`/api/adventurers/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+    });
 
-        adventurers = adventurers.filter(
-            (adventurer) => adventurer.id !== id
-        );
+    if (!response.ok) {
+        throw new Error(`Unable to update adventurer (${response.status}).`);
+    }
 
-        notifyChanges();
+    const updated: Adventurer = await response.json();
+
+    adventurers = adventurers.map((adventurer) =>
+        adventurer.id === id ? updated : adventurer
+    );
+    notifyChanges();
+
+    return { ...updated };
+},
+
+    async remove(id: number): Promise<void> {
+    const response = await fetch(`/api/adventurers/${id}`, {
+        method: "DELETE",
+    });
+
+    if (!response.ok) {
+        throw new Error(`Unable to remove adventurer (${response.status}).`);
+    }
+
+    adventurers = adventurers.filter((adventurer) => adventurer.id !== id);
+    notifyChanges();
     },
 
     subscribe(listener: () => void): () => void {

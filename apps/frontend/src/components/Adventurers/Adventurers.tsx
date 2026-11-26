@@ -3,20 +3,25 @@ import {
     AdventurersForm,
     AdventurerCard,
 } from "../AdventurersForm/AdventurersForm";
-
 import "./Adventurers.css";
 
 /**
- * Displays the roster and action errors provided by useAdventurers.
- * Creation and removal pass through the hook, service, and repository.
+ * Displays the roster and lets users add adventurers,
+ * edit their classes, and remove them.
  */
 export function Adventurers() {
     const {
         adventurers,
         error,
         addAdventurer,
+        updateAdventurer,
         removeAdventurer,
     } = useAdventurers();
+
+    if (adventurers === null) {
+        if (error) return <p role="alert">{error}</p>;
+        return <p role="status">Loading adventurers...</p>;
+    }
 
     return (
         <section className="adventurers">
@@ -34,9 +39,13 @@ export function Adventurers() {
                         key={adventurer.id}
                         name={adventurer.name}
                         characterClass={adventurer.characterClass}
-                        onRemove={() =>
-                            removeAdventurer(adventurer.id)
+                        onSaveClass={(newClass) =>
+                            updateAdventurer(adventurer.id, {
+                                name: adventurer.name,
+                                characterClass: newClass,
+                            })
                         }
+                        onRemove={() => removeAdventurer(adventurer.id)}
                     />
                 ))}
             </ul>

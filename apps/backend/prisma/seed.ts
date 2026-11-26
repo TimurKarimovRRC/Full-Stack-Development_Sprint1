@@ -1,3 +1,12 @@
+import { prisma } from "../src/db/prisma.js";
+import { seedAdventurers } from "./seedAdventurers.js";
+
+try {
+    const added = await seedAdventurers(prisma);
+    console.log(`Adventurers added: ${added}`);
+} finally {
+    await prisma.$disconnect();
+}
 import { PrismaClient, QuestDifficulty as PrismaQuestDifficulty } from "@prisma/client";
 import { questTestData } from "../../../shared/data/quests.js";
 

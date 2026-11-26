@@ -2,7 +2,6 @@ import { adventurerRepo } from "../repositories/adventurerRepo";
 import type { AdventurerInput } from "../types/adventurer";
 import type { ValidationResult } from "../types/validation";
 
-
 export function validateInput(
     value: string,
     field: "name" | "characterClass"
@@ -39,6 +38,10 @@ function prepareInput(input: AdventurerInput): AdventurerInput {
     };
 }
 
+export function loadAdventurers(signal: AbortSignal) {
+    return adventurerRepo.fetchAll(signal);
+}
+
 export function getAdventurers() {
     return adventurerRepo.getAll();
 }
@@ -51,15 +54,12 @@ export function createAdventurer(input: AdventurerInput) {
     return adventurerRepo.create(prepareInput(input));
 }
 
-export function updateAdventurer(
-    id: number,
-    input: AdventurerInput
-) {
+export function updateAdventurer(id: number, input: AdventurerInput) {
     return adventurerRepo.update(id, prepareInput(input));
 }
 
-export function deleteAdventurer(id: number) {
-    adventurerRepo.remove(id);
+export function deleteAdventurer(id: number): Promise<void> {
+    return adventurerRepo.remove(id);
 }
 
 export function subscribe(listener: () => void) {

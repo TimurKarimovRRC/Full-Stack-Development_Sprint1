@@ -25,24 +25,37 @@ As an adventurer, I want to update the status of my accepted quests, so that I c
 
 ## Run the app locally
 
-From the project root (the folder with `apps`), install dependencies and start both apps:
+Use Node.js 24 with npm and Docker with Docker Compose.
+
+On first setup, copy `apps/backend/.env.example` to `apps/backend/.env`.
+The example connects to the local PostgreSQL database `questboard_dev`
+on port `5433`, using the `public` schema.
+
+From the project root, start PostgreSQL and install the dependencies:
 
 ```sh
+docker compose up -d --wait postgres
 npm ci
+```
+
+Generate the Prisma client, apply the migrations, and load the adventurers:
+
+```sh
+cd apps/backend
+npx prisma generate
+npx prisma migrate deploy
+npx prisma db seed
+```
+
+On an empty database, the seed adds 45 adventurers. Running it again adds 0.
+
+Return to the project root and start both apps:
+
+```sh
+cd ../..
 npm run dev
 ```
 
-Open http://localhost:5173 to see the Quest Board. To check the backend, open
-http://localhost:3000/health. It should return `{"status":"ok"}`.
-
-### Start PostgreSQL
-
-You can check `/health` without a database. If your branch has a `docker-compose.yml`
-in the project root, start Docker and run these commands from that folder in a second terminal:
-
-```sh
-docker compose up -d
-docker compose ps
-```
-
-Look for `Up` in the status column. PostgreSQL is available on `localhost:5433`.
+Open http://localhost:5173/adventurers to see the roster.
+To check that the backend can read from PostgreSQL, open
+http://localhost:3000/api/adventurers.
