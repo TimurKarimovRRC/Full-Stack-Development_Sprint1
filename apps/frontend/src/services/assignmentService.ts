@@ -7,22 +7,21 @@ export const assignmentService = {
         return await assignmentRepository.getAll();
     },
 
-    createAssignment: async (assignmentData: Omit<Assignment, "id">): Promise<Assignment> => {
+    createAssignment: async (assignmentData: Omit<Assignment, "id" | "status" | "completedAt">): Promise<Assignment> => {
 
         if (!assignmentData.adventurerId || !assignmentData.questId || !assignmentData.dueDate) {
             throw new Error( "Please select an adventure, a quest, and a due date.");
         }
 
-        const newAssignment: Assignment = {
-            ...assignmentData,
-            id: Math.floor(Math.random()*1000000)
-        };
-
-        return await assignmentRepository.create(newAssignment);
+        return await assignmentRepository.create(assignmentData);
     },
 
     removeAssignment: async(id: number): Promise<void> => {
-        await assignmentRepository.delete(id);
+        await assignmentRepository.remove(id);
+    },
+
+    completeAssignment: async (id: number): Promise<Assignment> => {
+        return await assignmentRepository.complete(id)
     }
 
 };

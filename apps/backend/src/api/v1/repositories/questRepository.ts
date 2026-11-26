@@ -3,17 +3,21 @@ import {
     QuestDifficulty as PrismaQuestDifficulty,
     type Quest as PrismaQuest,
 } from "@prisma/client";
-import type { NewQuest, Quest, QuestDifficulty } from "@shared/quest.js";
+import type {
+    NewQuest,
+    Quest,
+    QuestDifficulty as ApiQuestDifficulty,
+} from "../../../types/quest.js";
 import { prisma } from "../../../db/prisma.js";
 
-const prismaDifficulties: Record<QuestDifficulty, PrismaQuestDifficulty> = {
+const prismaDifficulties: Record<ApiQuestDifficulty, PrismaQuestDifficulty> = {
     Easy: PrismaQuestDifficulty.Easy,
     Medium: PrismaQuestDifficulty.Medium,
     Hard: PrismaQuestDifficulty.Hard,
     Expert: PrismaQuestDifficulty.Expert,
 };
 
-const apiDifficulties: Record<PrismaQuestDifficulty, QuestDifficulty> = {
+const apiDifficulties: Record<PrismaQuestDifficulty, ApiQuestDifficulty> = {
     [PrismaQuestDifficulty.Easy]: "Easy",
     [PrismaQuestDifficulty.Medium]: "Medium",
     [PrismaQuestDifficulty.Hard]: "Hard",
