@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import type { NewQuest, Quest } from "@shared/quest.js";
+import type { NewQuest, Quest } from "../../../types/quest.js";
 import { questService } from "../services/questService.js";
 
 export const listQuests: RequestHandler<

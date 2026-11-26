@@ -1,4 +1,4 @@
-import type { NewQuest, Quest } from "@shared/quest.js";
+import type { NewQuest, Quest } from "../../../types/quest.js";
 import { questRepository } from "../repositories/questRepository.js";
 
 export const questService = {
