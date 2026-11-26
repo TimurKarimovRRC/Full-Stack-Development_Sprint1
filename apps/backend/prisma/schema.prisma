@@ -54,5 +54,5 @@ model QuestAssignment {
   quest        Quest        @relation(fields: [questId], references: [id])
   adventurer   Adventurer   @relation(fields: [adventurerId], references: [id])
 
-  @@map("quest-assignments")
+  @@map("quest_assignments")
 }
