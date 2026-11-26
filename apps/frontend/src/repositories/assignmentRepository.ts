@@ -1,30 +1,15 @@
+import type { Assignment } from "../types/assignments";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-export interface QuestAssignment {
-    id: number,
-    questId: number,
-    adventurerId: number,
-    status: "IN_PROGRESS" | "COMPLETED";
-    dueDate: string;
-    completedAt: string | null;
-    quest?: {
-        title: string;
-        reward: string;
-    };
-    adventuere?: {
-        name: string;
-    }
-}
 
 export const assignmentRepository = {
 
-    getAll: async (): Promise<QuestAssignment[]> => {
+    getAll: async (): Promise<Assignment[]> => {
         const response = await fetch(`${API_BASE_URL}/assignments`);
         if (!response.ok) throw new Error("Failed to fetch assignments.");
         return response.json()
     },
 
-    create: async (data: Omit<QuestAssignment, "id" | "status" | "completedAt">): Promise<QuestAssignment> => {
+    create: async (data: Omit<Assignment, "id" | "status" | "completedAt">): Promise<Assignment> => {
         const response = await fetch(`${API_BASE_URL}/assignments`, {
             method: "POST",
             headers: { "Content-Type": "application/json"},
@@ -35,7 +20,7 @@ export const assignmentRepository = {
         return response.json();
     },
 
-    complete: async (id: number): Promise<QuestAssignment> => {
+    complete: async (id: number): Promise<Assignment> => {
         const response = await fetch(`${API_BASE_URL}/assignments/${id}/complete`, {
             method: "PATCH"
         });
