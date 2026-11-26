@@ -2,6 +2,9 @@
   "name": "@questboard/backend",
   "private": true,
   "type": "module",
+  "prisma": {
+  "seed": "tsx prisma/seed.ts"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc -b",
