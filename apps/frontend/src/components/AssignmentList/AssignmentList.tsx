@@ -15,13 +15,15 @@ interface AssignmentListProps {
     quests: Quest[];
     assignments: Assignment[];
     removeAssignment: (id: number) => Promise<void>;
+    completeAssignment: (id: number) => Promise<void>;
 }
 
 export function AssignmentList({
   adventurers,
   quests,
   assignments,
-  removeAssignment
+  removeAssignment,
+  completeAssignment
 }: AssignmentListProps) {
 
     // find adventurer's name by id
@@ -64,7 +66,7 @@ export function AssignmentList({
                         <span
                         className={
                             "assignment-list__status assignment-list__status--" +
-                            assignment.status.toLowerCase().replace(" ", "-")
+                            assignment.status.toLowerCase().replace("_", "-")
                         }
                         >
                         {assignment.status}
@@ -75,7 +77,18 @@ export function AssignmentList({
                         </time>
                     </p>
                     </div>
-
+                    
+                    {assignment.status === "IN_PROGRESS" && (
+                        <button
+                            type="button"
+                            className="assignment-list__complete"
+                            onClick={() => completeAssignment(assignment.id)}
+                            style={{ marginRight: "10px", padding: "5px 10px", cursor: "pointer",
+                                backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "4px"
+                            }}    
+                        >Complete</button>
+                    )}
+                    
                     <button
                         type="button"
                         className="assignment-list__remove"

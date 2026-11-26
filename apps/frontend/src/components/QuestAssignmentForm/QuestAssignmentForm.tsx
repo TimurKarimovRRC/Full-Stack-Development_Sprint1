@@ -38,7 +38,7 @@ export function QuestAssignmentForm({
                 adventurerId: Number(adventurerId),
                 questId: Number(questId),
                 dueDate,
-                status: "In Progress"
+                status: "IN_PROGRESS"
             });
 
             setAdventurerId("");
