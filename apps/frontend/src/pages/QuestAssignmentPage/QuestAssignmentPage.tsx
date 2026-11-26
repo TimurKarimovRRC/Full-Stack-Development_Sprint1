@@ -13,7 +13,8 @@ import "./QuestAssignmentPage.css";
 
 export function QuestAssignmentPage (){
 
-    const { assignments, quests, adventurers, isLoading, addAssignment, removeAssignment} = useAssignments();
+    const { assignments, quests, adventurers, isLoading, addAssignment, removeAssignment, 
+        completeAssignment} = useAssignments();
 
     if (isLoading) 
         return <p>Loading Assignments...</p>
@@ -38,6 +39,7 @@ export function QuestAssignmentPage (){
                 quests={quests}
                 assignments={assignments}
                 removeAssignment={removeAssignment}
+                completeAssignment={completeAssignment}
             />
         </section>    
     );
