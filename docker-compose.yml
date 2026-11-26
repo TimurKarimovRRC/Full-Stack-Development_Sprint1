@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: questboard_dev
+    ports:
+      - "5433:5432"
+    volumes:
+      - questboard-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d questboard_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  questboard-postgres-data:
