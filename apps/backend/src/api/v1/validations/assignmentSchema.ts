@@ -1,17 +1,19 @@
 import { z } from "zod";
 
-export const createAssignmentSchema = z.object({
+export const assignmentSchema = z.object({
 
-    body: z.object({
         questId: z.number().int().positive("Quest ID must be a positive number."),
         adventurerId: z.number().int().positive("Adventurer ID must be a positive number."),
-        dueDate: z.string().datetime("Due Date must be a valid ISO date string.")
-    }),
+        dueDate: z.string().min(1, "Due date is required")
+            .refine((dateString) => {
+                const selectedDate = new Date(dateString);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                return selectedDate >= today;
+            }, {
+                message: "Due date cannot be in the past."
+            }) 
+
 });
 
-export const updateAssignmentStatusSchema = z.object({
-
-    body: z.object({
-        status: z.enum(["IN_PROGRESS", "COMPLETED"])
-    })
-});
+export const assignmentIdSchema = z.string().regex(/^\d+$/, "Assignment ID must be number.");
