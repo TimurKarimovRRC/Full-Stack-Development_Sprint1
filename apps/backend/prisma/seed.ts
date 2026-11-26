@@ -1,43 +1,27 @@
+import { questTestData } from "../../../shared/data/quests.js";
 import { prisma } from "../src/db/prisma.js";
 import { seedAdventurers } from "./seedAdventurers.js";
+import { seedAssignments } from "./seedAssignment.js";
 
 try {
-    const added = await seedAdventurers(prisma);
-    console.log(`Adventurers added: ${added}`);
+    const heroesAdded = await seedAdventurers(prisma);
+
+    const [quests] = await prisma.$transaction([
+        prisma.quest.createMany({ data: questTestData, skipDuplicates: true }),
+        // Seed quests have explicit IDs; keep the next generated ID above them.
+        prisma.$queryRaw`
+            SELECT setval('"Quest_id_seq"', GREATEST(
+                (SELECT MAX(id) FROM "Quest"),
+                (SELECT last_value FROM "Quest_id_seq")
+            ))
+        `,
+    ]);
+
+    const assignmentsAdded = await seedAssignments(prisma);
+
+    console.log("Adventurers added:", heroesAdded);
+    console.log("Quests added:", quests.count);
+    console.log("Assignments added:", assignmentsAdded);
 } finally {
     await prisma.$disconnect();
 }
-import { PrismaClient, QuestDifficulty as PrismaQuestDifficulty } from "@prisma/client";
-import { questTestData } from "../../../shared/data/quests.js";
-
-const prisma = new PrismaClient();
-
-async function seedQuests() {
-    for (const quest of questTestData) {
-        await prisma.quest.upsert({
-            where: { id: quest.id },
-            create: {
-                ...quest,
-                difficulty: PrismaQuestDifficulty[quest.difficulty],
-            },
-            update: {},
-        });
-    }
-
-    await prisma.$queryRaw`
-        SELECT setval(
-            pg_get_serial_sequence('"Quest"', 'id'),
-            COALESCE((SELECT MAX("id") FROM "Quest"), 1),
-            true
-        )
-    `;
-}
-
-seedQuests()
-    .catch((error: unknown) => {
-        console.error("Failed to seed quests:", error);
-        process.exitCode = 1;
-    })
-    .finally(async () => {
-        await prisma.$disconnect();
-    });
