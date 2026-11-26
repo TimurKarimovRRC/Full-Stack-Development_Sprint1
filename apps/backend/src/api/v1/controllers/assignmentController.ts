@@ -22,7 +22,7 @@ export const assignmentController = {
                 adventurerId,
                 dueDate
             });
-            res.status(200).json(newAssignment);
+            res.status(201).json(newAssignment);
         } catch (error) {
             next(error);
         }
